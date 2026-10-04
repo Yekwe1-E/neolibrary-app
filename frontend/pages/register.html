@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — NeoLibrary</title>
+  <meta name="description" content="Register for a free NeoLibrary membership card and start borrowing books today.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .auth-right { overflow-y: auto; }
+    .auth-page  { min-height: 100vh; }
+    @media (max-width: 1024px) { .auth-page { display: block; } }
+
+    .strength-bar { height: 3px; border-radius: 2px; background: var(--clr-bg-elevated); margin-top: 0.5rem; overflow: hidden; }
+    .strength-fill { height: 100%; border-radius: 2px; transition: width 0.3s ease, background 0.3s ease; width: 0; }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+
+    <!-- Left Panel -->
+    <div class="auth-left">
+      <div class="auth-left-inner animate-fade-in-up">
+        <a href="/" class="auth-logo">
+          <i class="ph ph-books"></i>
+          NeoLibrary
+        </a>
+
+        <h2>
+          Join thousands of<br>
+          <span class="gradient-text">avid readers.</span>
+        </h2>
+
+        <p>
+          Create your free digital library card and unlock access to our full catalog —
+          borrow, reserve, renew, and discover books that matter to you.
+        </p>
+
+        <ul class="auth-feature-list">
+          <li><i class="ph ph-check-circle"></i> Free library card — no credit card needed</li>
+          <li><i class="ph ph-check-circle"></i> Borrow up to 5 books simultaneously</li>
+          <li><i class="ph ph-check-circle"></i> Reserve out-of-stock titles instantly</li>
+          <li><i class="ph ph-check-circle"></i> Read reviews and discover new titles</li>
+          <li><i class="ph ph-check-circle"></i> Manage everything from your dashboard</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="auth-right">
+      <div class="auth-right-inner animate-fade-in-up">
+        <a href="/" class="auth-logo">
+          <i class="ph ph-books"></i>
+          NeoLibrary
+        </a>
+
+        <h1 class="auth-form-title">Create account</h1>
+        <p class="auth-form-sub">Already have a card? <a href="/pages/login.html">Sign in here</a></p>
+
+        <form id="register-form">
+
+          <div class="form-group">
+            <label for="full_name">Full Legal Name</label>
+            <div class="input-group">
+              <i class="ph ph-user input-icon"></i>
+              <input type="text" id="full_name" class="form-control" required
+                     placeholder="John Doe" autocomplete="name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <i class="ph ph-envelope input-icon"></i>
+              <input type="email" id="email" class="form-control" required
+                     placeholder="you@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group" style="position:relative;">
+                <i class="ph ph-lock input-icon"></i>
+                <input type="password" id="password" class="form-control" required
+                       placeholder="Min 6 characters" minlength="6" autocomplete="new-password" style="padding-left:2.625rem;">
+              </div>
+              <div class="strength-bar">
+                <div class="strength-fill" id="strength-fill"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirm_pwd">Confirm Password</label>
+              <div class="input-group">
+                <i class="ph ph-lock-key input-icon"></i>
+                <input type="password" id="confirm_pwd" class="form-control" required
+                       placeholder="Type again" minlength="6" autocomplete="new-password">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span style="color:var(--clr-text-faint);">(Optional)</span></label>
+            <div class="input-group">
+              <i class="ph ph-phone input-icon"></i>
+              <input type="text" id="phone" class="form-control" placeholder="+234 800 000 0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Mailing Address <span style="color:var(--clr-text-faint);">(Optional)</span></label>
+            <textarea id="address" class="form-control" rows="2"
+                      placeholder="No. 1 Library Road, City…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="register-btn">
+            <i class="ph ph-identification-card"></i>
+            Create My Library Card
+          </button>
+        </form>
+
+        <p class="auth-footer-link">
+          By registering you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+        <p class="auth-footer-link" style="margin-top: 0.75rem;">
+          <a href="/">← Back to homepage</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.Auth.redirectIfAuthenticated();
+
+      // Password strength indicator
+      const pwdInput    = document.getElementById('password');
+      const strengthBar = document.getElementById('strength-fill');
+
+      pwdInput.addEventListener('input', () => {
+        const v = pwdInput.value;
+        let score = 0;
+        if (v.length >= 6)  score++;
+        if (v.length >= 10) score++;
+        if (/[A-Z]/.test(v)) score++;
+        if (/[0-9]/.test(v)) score++;
+        if (/[^A-Za-z0-9]/.test(v)) score++;
+
+        const pct   = (score / 5) * 100;
+        const color = score <= 1 ? '#ef4444' : score <= 3 ? '#f59e0b' : '#10b981';
+        strengthBar.style.width      = pct + '%';
+        strengthBar.style.background = color;
+      });
+
+      const regForm = document.getElementById('register-form');
+      const regBtn  = document.getElementById('register-btn');
+
+      regForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const full_name   = document.getElementById('full_name').value.trim();
+        const email       = document.getElementById('email').value.trim();
+        const password    = document.getElementById('password').value;
+        const confirm_pwd = document.getElementById('confirm_pwd').value;
+        const phone       = document.getElementById('phone').value.trim();
+        const address     = document.getElementById('address').value.trim();
+
+        if (password !== confirm_pwd) {
+          window.showToast("Passwords do not match.", "error");
+          return;
+        }
+
+        try {
+          regBtn.disabled  = true;
+          regBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Creating account…';
+
+          const payload  = { full_name, email, password, phone, address };
+          const response = await window.api.post('/auth/register', payload);
+
+          if (response.status === 'success') {
+            window.showToast("Welcome to NeoLibrary! Redirecting…", "success");
+            window.Auth.setSession(response.data.token, response.data.user);
+            setTimeout(() => { window.location.href = '/pages/dashboard.html'; }, 1200);
+          }
+        } catch (error) {
+          window.showToast(error.message, "error");
+        } finally {
+          regBtn.disabled  = false;
+          regBtn.innerHTML = '<i class="ph ph-identification-card"></i> Create My Library Card';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

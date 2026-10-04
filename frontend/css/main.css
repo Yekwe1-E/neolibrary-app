@@ -1,0 +1,308 @@
+/* ============================================================
+   NeoLibrary — Premium Design System
+   Core Variables, Tokens, Resets & Base Styles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* === COLOR PALETTE === */
+  /* Primary — Vivid Indigo */
+  --clr-primary:          hsl(239, 84%, 67%);
+  --clr-primary-dim:      hsl(239, 60%, 55%);
+  --clr-primary-bright:   hsl(235, 92%, 76%);
+  --clr-primary-glow:     hsla(239, 84%, 67%, 0.25);
+  --clr-primary-subtle:   hsla(239, 84%, 67%, 0.10);
+
+  /* Accent — Electric Gold */
+  --clr-accent:           hsl(38, 92%, 58%);
+  --clr-accent-dim:       hsl(38, 75%, 48%);
+  --clr-accent-glow:      hsla(38, 92%, 58%, 0.25);
+
+  /* Semantic Colors */
+  --clr-success:          hsl(158, 64%, 45%);
+  --clr-success-subtle:   hsla(158, 64%, 45%, 0.12);
+  --clr-warning:          hsl(38, 92%, 58%);
+  --clr-warning-subtle:   hsla(38, 92%, 58%, 0.12);
+  --clr-danger:           hsl(0, 80%, 62%);
+  --clr-danger-dim:       hsl(0, 72%, 52%);
+  --clr-danger-subtle:    hsla(0, 80%, 62%, 0.12);
+
+  /* Dark Background Scale */
+  --clr-bg-void:          #050609;
+  --clr-bg-base:          #0a0c15;
+  --clr-bg-surface:       #10131f;
+  --clr-bg-card:          #161924;
+  --clr-bg-elevated:      #1d2133;
+  --clr-bg-hover:         #232840;
+
+  /* Text Scale */
+  --clr-text:             hsl(228, 60%, 96%);
+  --clr-text-secondary:   hsl(224, 30%, 75%);
+  --clr-text-muted:       hsl(224, 20%, 55%);
+  --clr-text-faint:       hsl(224, 15%, 38%);
+
+  /* Border */
+  --clr-border:           hsla(224, 40%, 80%, 0.08);
+  --clr-border-subtle:    hsla(224, 40%, 80%, 0.05);
+  --clr-border-strong:    hsla(224, 40%, 80%, 0.16);
+
+  /* === TYPOGRAPHY === */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:    'Inter',  -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* === SHADOWS & GLOW === */
+  --shadow-xs:   0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md:   0 8px 24px rgba(0,0,0,0.35);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.4);
+  --shadow-xl:   0 32px 80px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 32px var(--clr-primary-glow), 0 0 64px hsla(239,84%,67%,0.10);
+  --shadow-card: 0 1px 0 var(--clr-border), 0 8px 32px rgba(0,0,0,0.3);
+
+  /* === GLASSMORPHISM === */
+  --glass-bg:      rgba(22, 25, 36, 0.72);
+  --glass-bg-dark: rgba(10, 12, 21, 0.85);
+  --glass-border:  rgba(255, 255, 255, 0.07);
+  --glass-blur:    blur(16px) saturate(1.4);
+
+  /* === BORDER RADIUS === */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-full: 9999px;
+
+  /* === TRANSITIONS === */
+  --ease-fast:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-normal:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:     120ms;
+  --dur-normal:   240ms;
+  --dur-slow:     400ms;
+
+  /* === LEGACY ALIASES (keep pages working) === */
+  --color-primary:          var(--clr-primary);
+  --color-primary-hover:    var(--clr-primary-dim);
+  --color-primary-light:    var(--clr-primary-subtle);
+  --color-success:          var(--clr-success);
+  --color-warning:          var(--clr-warning);
+  --color-danger:           var(--clr-danger);
+  --color-danger-hover:     var(--clr-danger-dim);
+  --color-text-main:        var(--clr-text);
+  --color-text-muted:       var(--clr-text-muted);
+  --color-text-light:       var(--clr-text-faint);
+  --color-bg-base:          var(--clr-bg-base);
+  --color-bg-surface:       var(--clr-bg-surface);
+  --color-bg-surface-hover: var(--clr-bg-hover);
+  --color-border:           var(--clr-border);
+  --font-primary:           var(--font-display);
+  --shadow-sm:              var(--shadow-sm);
+  --shadow-md:              var(--shadow-md);
+  --shadow-lg:              var(--shadow-lg);
+  --shadow-xl:              var(--shadow-xl);
+  --glass-bg:               var(--glass-bg);
+  --glass-border:           var(--glass-border);
+  --glass-blur:             var(--glass-blur);
+  --radius-md:              var(--radius-md);
+  --radius-lg:              var(--radius-lg);
+  --radius-xl:              var(--radius-xl);
+  --radius-full:            var(--radius-full);
+  --transition-fast:        var(--dur-fast) var(--ease-normal);
+  --transition-normal:      var(--dur-normal) var(--ease-normal);
+}
+
+/* ─── Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family:              var(--font-body);
+  background-color:         var(--clr-bg-base);
+  color:                    var(--clr-text);
+  line-height:              1.6;
+  -webkit-font-smoothing:   antialiased;
+  -moz-osx-font-smoothing:  grayscale;
+  min-height:               100vh;
+}
+
+/* Background noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family:   var(--font-display);
+  font-weight:   700;
+  line-height:   1.15;
+  color:         var(--clr-text);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
+h4 { font-size: 1.125rem; }
+
+p { line-height: 1.7; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--dur-fast) var(--ease-normal);
+}
+
+img {
+  max-width: 100%;
+  display:   block;
+}
+
+button { cursor: pointer; }
+
+input, select, textarea {
+  font-family: var(--font-body);
+  color:       var(--clr-text);
+}
+
+/* ─── Typography Utilities ───────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--clr-primary-bright) 0%, var(--clr-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, var(--clr-primary-bright), var(--clr-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-xs   { font-size: 0.75rem; }
+.text-sm   { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg   { font-size: 1.125rem; }
+.text-muted   { color: var(--clr-text-muted); }
+.text-faint   { color: var(--clr-text-faint); }
+.text-danger  { color: var(--clr-danger); }
+.text-success { color: var(--clr-success); }
+.text-center  { text-align: center; }
+.font-mono { font-family: var(--font-mono); }
+
+/* ─── Glassmorphism Classes ──────────────────────────── */
+.glass {
+  background:        var(--glass-bg);
+  backdrop-filter:   var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border:            1px solid var(--glass-border);
+}
+
+.glass-dark {
+  background:        var(--glass-bg-dark);
+  backdrop-filter:   var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border:            1px solid var(--glass-border);
+  color:             var(--clr-text);
+}
+
+/* ─── Animations ─────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes fadeOutRight {
+  to { transform: translateX(110%); opacity: 0; }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px)   rotate(0deg); }
+  33%  { transform: translateY(-12px) rotate(1deg); }
+  66%  { transform: translateY(-6px)  rotate(-0.5deg); }
+  100% { transform: translateY(0px)   rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--clr-primary-glow); }
+  50%       { box-shadow: 0 0 40px var(--clr-primary-glow), 0 0 80px hsla(239,84%,67%,0.12); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+@keyframes skeletonLoading {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.65s var(--ease-fast) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s var(--ease-normal) both;
+}
+
+.floating-image {
+  animation: float 7s ease-in-out infinite;
+}
+
+.ph-spin {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--clr-bg-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--clr-bg-elevated);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--clr-bg-hover); }
+
+/* ─── Selection ──────────────────────────────────────── */
+::selection {
+  background: var(--clr-primary-glow);
+  color: var(--clr-primary-bright);
+}

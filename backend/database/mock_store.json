@@ -1,0 +1,2689 @@
+{
+  "profiles": [
+    {
+      "id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "full_name": "System Admin",
+      "email": "admin@library.com",
+      "password_hash": "$2a$10$EHWxxPJ2J0tr8wMNK.QYZeCVKuuBVW0KnoC3USdRflPw2IAzZyTa.",
+      "role": "admin",
+      "phone": "+2348011223344",
+      "address": "12 Library Way, Lagos",
+      "membership_date": "2026-06-19T02:35:33.981Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=admin",
+      "created_at": "2026-07-19T02:35:33.997Z",
+      "updated_at": "2026-07-19T02:35:33.997Z"
+    },
+    {
+      "id": "1a8bfe12-70b1-43e3-962c-f3c0115df1b0",
+      "full_name": "Librarian Chief",
+      "email": "librarian@library.com",
+      "password_hash": "$2a$10$EHWxxPJ2J0tr8wMNK.QYZerjEmBYenYYUTu3rS3WiD5Am/ingmqDu",
+      "role": "librarian",
+      "phone": "+2348022334455",
+      "address": "15 Library Road, Abuja",
+      "membership_date": "2026-07-04T02:35:34.129Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=librarian",
+      "created_at": "2026-07-19T02:35:34.129Z",
+      "updated_at": "2026-07-19T02:35:34.129Z"
+    },
+    {
+      "id": "9a2bfe12-70b1-43e3-962c-f3c0115df1c0",
+      "full_name": "John Patron",
+      "email": "patron@library.com",
+      "password_hash": "$2a$10$EHWxxPJ2J0tr8wMNK.QYZea.2DODHnP0I1WWnyD189yixHAxIw5ru",
+      "role": "patron",
+      "phone": "+2348033445566",
+      "address": "3 Patron Avenue, Yenagoa",
+      "membership_date": "2026-07-19T02:35:34.249Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=john",
+      "created_at": "2026-07-19T02:35:34.249Z",
+      "updated_at": "2026-07-19T02:35:34.249Z"
+    },
+    {
+      "id": "ef5bfe12-70b1-43e3-962c-f3c0115df1d0",
+      "full_name": "Suspended User",
+      "email": "suspended@library.com",
+      "password_hash": "$2a$10$EHWxxPJ2J0tr8wMNK.QYZea.2DODHnP0I1WWnyD189yixHAxIw5ru",
+      "role": "patron",
+      "phone": "+2348044556677",
+      "address": "Block B, Gbagada, Lagos",
+      "membership_date": "2026-04-20T02:35:34.410Z",
+      "status": "suspended",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=suspended",
+      "created_at": "2026-07-19T02:35:34.410Z",
+      "updated_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1784428556555@test.com",
+      "password_hash": "$2a$10$Sf6Cv/c9bLmk7cC43O73ue2MQcILgXIfAAuwhrf873UUWH17310G.",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-07-19T02:35:56.689Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-07-19T02:35:56.689Z",
+      "updated_at": "2026-07-19T02:35:56.689Z"
+    },
+    {
+      "id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1784428566696@test.com",
+      "password_hash": "$2a$10$Go.5C7CSB3MwvddCUa0ygOot83qIYU0ysWthUqLTr/1ls9X3FRjCG",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-07-19T02:36:06.827Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-07-19T02:36:06.827Z",
+      "updated_at": "2026-07-19T02:36:06.827Z"
+    },
+    {
+      "id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1784428580630@test.com",
+      "password_hash": "$2a$10$0Nr5QgdlR4xozoGFVXGWBO44UmXz.bLQD.H/M4q6gLYM4JIhebPV6",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-07-19T02:36:20.752Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-07-19T02:36:20.752Z",
+      "updated_at": "2026-07-19T02:36:20.752Z"
+    },
+    {
+      "id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1784428603871@test.com",
+      "password_hash": "$2a$10$OcqRvg/uIao.8ANIeTb6z.9UVd94Zu8zpjeZ5FNO4B/UhBDY7Xn6a",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-07-19T02:36:44.002Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-07-19T02:36:44.002Z",
+      "updated_at": "2026-07-19T02:36:44.002Z"
+    },
+    {
+      "id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1784428646681@test.com",
+      "password_hash": "$2a$10$lm7aOwmnwgXx.fe8WZtxjeQsOD1ssB8JqDfZ.ZElMuWZwYjHEnysK",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-07-19T02:37:26.808Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-07-19T02:37:26.808Z",
+      "updated_at": "2026-07-19T02:37:26.808Z"
+    },
+    {
+      "id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786045507152@test.com",
+      "password_hash": "$2a$10$B.jaAWzQn1wr40YRLJjwc.EMfs6Yb.WuvDIET5RVfRfIPti3jUVr6",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-06T19:45:07.283Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-06T19:45:07.283Z",
+      "updated_at": "2026-08-06T19:45:07.283Z"
+    },
+    {
+      "id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786045524775@test.com",
+      "password_hash": "$2a$10$HOcgiGkWbKHZ452QPN8gr.h2OBGbJyRSmUJ6JjTMrLZE7lb3DG4Te",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-06T19:45:24.898Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-06T19:45:24.898Z",
+      "updated_at": "2026-08-06T19:45:24.898Z"
+    },
+    {
+      "id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786045583808@test.com",
+      "password_hash": "$2a$10$8gcED76I/jfR7AenXsdQiuawuYtnbq7a0yr2ydqDP4ZchtYi4kOAa",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-06T19:46:23.921Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-06T19:46:23.921Z",
+      "updated_at": "2026-08-06T19:46:23.921Z"
+    },
+    {
+      "id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786045598722@test.com",
+      "password_hash": "$2a$10$wnd52VaZRAKnS4VynpjQyOpCzqXXM0KZzynGa4xBMcaNjJv/mgJOW",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-06T19:46:38.838Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-06T19:46:38.838Z",
+      "updated_at": "2026-08-06T19:46:38.838Z"
+    },
+    {
+      "id": "82ea6de7-5fec-4683-9078-dd26c07e7723",
+      "full_name": "Patron Student",
+      "email": "student@library.com",
+      "password_hash": "$2a$10$Kiv5NR2NrHgmVpLiEhtk5eOZIuYyEewcCxx2yfW2i3K1u9XawSjGq",
+      "role": "patron",
+      "phone": "",
+      "address": "",
+      "membership_date": "2026-08-06T19:51:38.337Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Patron%20Student",
+      "created_at": "2026-08-06T19:51:38.337Z",
+      "updated_at": "2026-08-06T19:51:38.337Z"
+    },
+    {
+      "id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786291004327@test.com",
+      "password_hash": "$2a$10$1cY37/AHRE1nMXCPf8.ARO3VWsyxJfnR8F32fIaCtbi/mxEPN/Kfi",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-09T15:56:44.467Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-09T15:56:44.467Z",
+      "updated_at": "2026-08-09T15:56:44.467Z"
+    },
+    {
+      "id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786291016588@test.com",
+      "password_hash": "$2a$10$FiiZxg4nNpq/oGfSQ9.qge2UUqgggiMLM4EvzQCcB5PWiKDwPBlZ.",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-09T15:56:56.720Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-09T15:56:56.720Z",
+      "updated_at": "2026-08-09T15:56:56.720Z"
+    },
+    {
+      "id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786291259712@test.com",
+      "password_hash": "$2a$10$vU3jSzeKLqCZ7AKrtsP6t..jVrKQm/A7RVaex5TPNbN7M/MIl/rWy",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-09T16:00:59.834Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-09T16:00:59.834Z",
+      "updated_at": "2026-08-09T16:00:59.834Z"
+    },
+    {
+      "id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "full_name": "Verify User",
+      "email": "verify_1786291540335@test.com",
+      "password_hash": "$2a$10$AxM3kNVUbRdt4BZDrrZrPe55V64nkrJQHl1iCbVTIDNc6Rz50Q4WO",
+      "role": "patron",
+      "phone": "08011112222",
+      "address": "1 Test St",
+      "membership_date": "2026-08-09T16:05:40.697Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-09T16:05:40.697Z",
+      "updated_at": "2026-08-09T16:05:40.697Z"
+    },
+    {
+      "id": "e1459f5d-3b51-423f-96b0-7ddc0ba1afc0",
+      "full_name": "Verify User",
+      "email": "verify_1786333855011@test.com",
+      "password_hash": "$2a$10$s52rmc5puMhBa3IKwRYR2eI37dDUfgcWyUJ9gIj754d2JqzSraqkm",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-08-10T03:50:55.195Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-10T03:50:55.196Z",
+      "updated_at": "2026-08-10T03:50:55.196Z"
+    },
+    {
+      "id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "full_name": "Verify User",
+      "email": "verify_1786333960570@test.com",
+      "password_hash": "$2a$10$oej8FUAfKNuFCUi2m.A2Ouv/fkFynO5Zj9iw85UF01HChsnmEzBN2",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-08-10T03:52:40.692Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-10T03:52:40.692Z",
+      "updated_at": "2026-08-10T03:52:40.692Z"
+    },
+    {
+      "id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1786335029356@test.com",
+      "password_hash": "$2a$10$acKQryW17ASlUCKK26un3uI5maeMnDotO95VZOV17OTQSRjtDO/jy",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-10T04:10:29.553Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-10T04:10:29.553Z",
+      "updated_at": "2026-08-10T04:10:29.553Z"
+    },
+    {
+      "id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1787563372791@test.com",
+      "password_hash": "$2a$10$cdgjfyQ.FNqx6OBRHzlGIe7fdVqgzLiLxW2Ngd.wNb4VNTfjQiaT2",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-24T09:22:52.950Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-24T09:22:52.950Z",
+      "updated_at": "2026-08-24T09:22:52.950Z"
+    },
+    {
+      "id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "full_name": "Verify User",
+      "email": "verify_1787563678649@test.com",
+      "password_hash": "$2a$10$OqURGk.aKCscmcuVPvuZpeTXeYorld6mVeckcdY56NROXBTFf6oKu",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-08-24T09:27:58.773Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-24T09:27:58.773Z",
+      "updated_at": "2026-08-24T09:27:58.773Z"
+    },
+    {
+      "id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "full_name": "Verify User",
+      "email": "verify_1787563733202@test.com",
+      "password_hash": "$2a$10$5TNcTPwNkHrnssLTjOf.7OSXxZ7vM28SV8ZJj0UlXyGAfwdHyhaT2",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-08-24T09:28:53.346Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-24T09:28:53.346Z",
+      "updated_at": "2026-08-24T09:28:53.346Z"
+    },
+    {
+      "id": "40d73d55-420d-479e-9465-d70669e60378",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1787563738981@test.com",
+      "password_hash": "$2a$10$7fePj73Zn6gaN/A4Qi/.G.us8ev1cn11oKTziJkOZKUA5bfvvIIUO",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-24T09:28:59.132Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-24T09:28:59.132Z",
+      "updated_at": "2026-08-24T09:28:59.132Z"
+    },
+    {
+      "id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1787564172065@test.com",
+      "password_hash": "$2a$10$BEFCim8SIKrOstyiVrLLFuxkeGfWlwwL11sqVxqK8l2xBYWIfJIV2",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-08-24T09:36:12.223Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-08-24T09:36:12.223Z",
+      "updated_at": "2026-08-24T09:36:12.223Z"
+    },
+    {
+      "id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "full_name": "Verify User",
+      "email": "verify_1787564270243@test.com",
+      "password_hash": "$2a$10$m4.hJE9EWDrAO9zThRxkTOD0poThcL6Eg8LXwbNqR1vYB9GYy0qge",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-08-24T09:37:50.392Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-08-24T09:37:50.392Z",
+      "updated_at": "2026-08-24T09:37:50.392Z"
+    },
+    {
+      "id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1791053673750@test.com",
+      "password_hash": "$2a$10$GdqOycffOdRtHBFFBkRCjuVxaXhYIVzbw75/TJbNgj6sEN7SABFt2",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-10-03T18:54:33.953Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-10-03T18:54:33.953Z",
+      "updated_at": "2026-10-03T18:54:33.953Z"
+    },
+    {
+      "id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "full_name": "Verify User",
+      "email": "verify_1791056345177@test.com",
+      "password_hash": "$2a$10$bS6qSo8barxAcMSOKY0xNus0PQk9f4QXJCKMKHyNZIUmAVf3evjje",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-10-03T19:39:05.296Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-10-03T19:39:05.296Z",
+      "updated_at": "2026-10-03T19:39:05.296Z"
+    },
+    {
+      "id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1791056464400@test.com",
+      "password_hash": "$2a$10$SPOCBZuwSpu3QTUi9uyvMeKbZ6bmUVwGz3K7hOqvuYSXenapExeq.",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-10-03T19:41:04.518Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-10-03T19:41:04.518Z",
+      "updated_at": "2026-10-03T19:41:04.518Z"
+    },
+    {
+      "id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "full_name": "Verify User",
+      "email": "verify_1791056475577@test.com",
+      "password_hash": "$2a$10$c.GVCZEBm/s19YhOG6hJGevqENjxNHIJiq32T9a5TltHmOJPS42uG",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "1 Test St",
+      "membership_date": "2026-10-03T19:41:15.755Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Verify%20User",
+      "created_at": "2026-10-03T19:41:15.755Z",
+      "updated_at": "2026-10-03T19:41:15.755Z"
+    },
+    {
+      "id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "full_name": "Test Patron User",
+      "email": "test_patron_1791056816450@test.com",
+      "password_hash": "$2a$10$W8YXfnXPnqPhwfqyyjOjzeO0oJm3TVpvRBMPXFHGq62zFJEthMDPG",
+      "role": "patron",
+      "phone": "08012345678",
+      "address": "10 University Road, Lagos",
+      "membership_date": "2026-10-03T19:46:56.573Z",
+      "status": "active",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test%20Patron%20User",
+      "created_at": "2026-10-03T19:46:56.573Z",
+      "updated_at": "2026-10-03T19:46:56.573Z"
+    }
+  ],
+  "books": [
+    {
+      "id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "isbn": "9780132350884",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "publisher": "Prentice Hall",
+      "publication_year": 2008,
+      "genre": [
+        "Science & Technology",
+        "Coding"
+      ],
+      "description": "A handbook of agile software craftsmanship that teaches you how to write readable, reusable, and refactorable code.",
+      "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/41xShCOr8sL._SX379_BO1,204,203,200_.jpg",
+      "digital_copy_url": "/uploads/clean_code.pdf",
+      "total_copies": 5,
+      "available_copies": 4,
+      "shelf_location": "Aisle A, Shelf 3",
+      "language": "English",
+      "pages": 464,
+      "status": "available",
+      "created_at": "2026-07-19T02:35:34.410Z",
+      "updated_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "b1c2fe12-70b1-43e3-962c-f3c0115df202",
+      "isbn": "9780134494166",
+      "title": "Design Patterns",
+      "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+      "publisher": "Addison-Wesley",
+      "publication_year": 1994,
+      "genre": [
+        "Science & Technology",
+        "Software Design"
+      ],
+      "description": "Captures 23 classic design patterns in object-oriented software development.",
+      "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/51szD9HC9pL._SX395_BO1,204,203,200_.jpg",
+      "digital_copy_url": null,
+      "total_copies": 2,
+      "available_copies": 2,
+      "shelf_location": "Aisle A, Shelf 4",
+      "language": "English",
+      "pages": 395,
+      "status": "available",
+      "created_at": "2026-07-19T02:35:34.410Z",
+      "updated_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "isbn": "9780596007126",
+      "title": "Head First Design Patterns",
+      "author": "Eric Freeman, Elisabeth Robson",
+      "publisher": "O'Reilly Media",
+      "publication_year": 2004,
+      "genre": [
+        "Science & Technology",
+        "Coding"
+      ],
+      "description": "A brain-friendly guide to design patterns in software design.",
+      "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/61AP8xIAg6L._SX430_BO1,204,203,200_.jpg",
+      "digital_copy_url": "",
+      "total_copies": 1,
+      "available_copies": 0,
+      "shelf_location": "Aisle B, Shelf 1",
+      "language": "English",
+      "pages": 694,
+      "status": "borrowed",
+      "created_at": "2026-07-19T02:35:34.410Z",
+      "updated_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "b1c2fe12-70b1-43e3-962c-f3c0115df204",
+      "isbn": "9780201633610",
+      "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+      "author": "GoF",
+      "publisher": "Addison-Wesley Professional",
+      "publication_year": 1994,
+      "genre": [
+        "Science & Technology"
+      ],
+      "description": "Classics book on design patterns.",
+      "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/51szD9HC9pL._SX395_BO1,204,203,200_.jpg",
+      "digital_copy_url": "",
+      "total_copies": 3,
+      "available_copies": 3,
+      "shelf_location": "Aisle A, Shelf 2",
+      "language": "English",
+      "pages": 395,
+      "status": "available",
+      "created_at": "2026-07-19T02:35:34.410Z",
+      "updated_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "isbn": "9780000000001",
+      "title": "Test Book Alpha",
+      "author": "Test Author",
+      "publisher": "Test Pub",
+      "publication_year": 2024,
+      "genre": [
+        "Test"
+      ],
+      "cover_image_url": "https://images-na.ssl-images-amazon.com/images/I/41m1rWaeD1L._SX331_BO1,204,203,200_.jpg",
+      "total_copies": 3,
+      "available_copies": 3,
+      "language": "English",
+      "pages": 100,
+      "id": "adf5d3d0-4bc6-40a8-a8ea-52b869e89e6f",
+      "status": "available",
+      "created_at": "2026-08-10T03:52:40.964Z",
+      "updated_at": "2026-08-10T03:52:40.964Z"
+    },
+    {
+      "isbn": "9787563733703",
+      "title": "Test Book Alpha",
+      "author": "Test Author",
+      "publisher": "Test Pub",
+      "publication_year": 2024,
+      "genre": [
+        "Test"
+      ],
+      "total_copies": 3,
+      "available_copies": 3,
+      "language": "English",
+      "pages": 100,
+      "id": "d652a629-e2c9-4032-9fb2-8135e5452aff",
+      "status": "available",
+      "created_at": "2026-08-24T09:28:53.699Z",
+      "updated_at": "2026-08-24T09:28:53.699Z"
+    },
+    {
+      "isbn": "9787564270723",
+      "title": "Test Book Alpha",
+      "author": "Test Author",
+      "publisher": "Test Pub",
+      "publication_year": 2024,
+      "genre": [
+        "Test"
+      ],
+      "total_copies": 3,
+      "available_copies": 3,
+      "language": "English",
+      "pages": 100,
+      "id": "bc7aecc8-fc3d-43ef-a668-0bd5439a5a6e",
+      "status": "available",
+      "created_at": "2026-08-24T09:37:50.717Z",
+      "updated_at": "2026-08-24T09:37:50.717Z"
+    },
+    {
+      "isbn": "9781056345553",
+      "title": "Test Book Alpha",
+      "author": "Test Author",
+      "publisher": "Test Pub",
+      "publication_year": 2024,
+      "genre": [
+        "Test"
+      ],
+      "total_copies": 3,
+      "available_copies": 3,
+      "language": "English",
+      "pages": 100,
+      "id": "5f94c097-db7a-4ed1-9058-e4abffcc822a",
+      "status": "available",
+      "created_at": "2026-10-03T19:39:05.551Z",
+      "updated_at": "2026-10-03T19:39:05.551Z"
+    },
+    {
+      "isbn": "9781056476036",
+      "title": "Test Book Alpha",
+      "author": "Test Author",
+      "publisher": "Test Pub",
+      "publication_year": 2024,
+      "genre": [
+        "Test"
+      ],
+      "total_copies": 3,
+      "available_copies": 3,
+      "language": "English",
+      "pages": 100,
+      "id": "2df55252-906a-477e-be61-9edea008fe06",
+      "status": "available",
+      "created_at": "2026-10-03T19:41:16.038Z",
+      "updated_at": "2026-10-03T19:41:16.038Z"
+    }
+  ],
+  "borrowings": [
+    {
+      "id": "w3bfe12-70b1-43e3-962c-f3c0115df301",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "9a2bfe12-70b1-43e3-962c-f3c0115df1c0",
+      "borrow_date": "2026-07-09T02:35:34.410Z",
+      "due_date": "2026-07-23T02:35:34.410Z",
+      "return_date": null,
+      "status": "overdue",
+      "renewal_count": 0,
+      "fine_amount": 3650,
+      "notes": "First time borrow",
+      "created_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "w3bfe12-70b1-43e3-962c-f3c0115df302",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "ef5bfe12-70b1-43e3-962c-f3c0115df1d0",
+      "borrow_date": "2026-06-29T02:35:34.410Z",
+      "due_date": "2026-07-13T02:35:34.410Z",
+      "return_date": null,
+      "status": "overdue",
+      "renewal_count": 0,
+      "fine_amount": 4150,
+      "notes": "Needs return immediately",
+      "created_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "69e6883f-5992-48e3-b420-e1886f51d060",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "borrow_date": "2026-07-19T02:35:56.716Z",
+      "due_date": "2026-08-09T02:35:56.716Z",
+      "return_date": "2026-07-19T02:35:56.751Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: b1e574c1-f09a-4bce-8c87-db264abb1925 | Returned in pristine condition.",
+      "created_at": "2026-07-19T02:35:56.716Z"
+    },
+    {
+      "id": "26b924ee-97c1-485c-8893-f29269607ac8",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "borrow_date": "2026-07-19T02:36:06.846Z",
+      "due_date": "2026-08-09T02:36:06.846Z",
+      "return_date": "2026-07-19T02:36:06.871Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: d4aac797-6308-45f7-a98f-ceec4fb20b3f | Returned in pristine condition.",
+      "created_at": "2026-07-19T02:36:06.846Z"
+    },
+    {
+      "id": "60a3b957-60f0-4e35-8e85-dfc3b3066e46",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "borrow_date": "2026-07-19T02:36:20.770Z",
+      "due_date": "2026-08-09T02:36:20.770Z",
+      "return_date": "2026-07-19T02:36:20.797Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 1e0a0fac-1d98-4ca6-8361-ee6c6b4db485 | Returned in pristine condition.",
+      "created_at": "2026-07-19T02:36:20.770Z"
+    },
+    {
+      "id": "2eacca1b-931c-4cf2-9002-46c0a0cc0461",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "borrow_date": "2026-07-19T02:36:44.021Z",
+      "due_date": "2026-08-09T02:36:44.021Z",
+      "return_date": "2026-07-19T02:36:44.047Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 3af60b69-d584-42d1-aae9-e467eaa1737a | Returned in pristine condition.",
+      "created_at": "2026-07-19T02:36:44.021Z"
+    },
+    {
+      "id": "23e523ef-88ec-4bcc-b80b-05df3db8ce71",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "borrow_date": "2026-07-19T02:37:26.824Z",
+      "due_date": "2026-08-09T02:37:26.824Z",
+      "return_date": "2026-07-19T02:37:26.849Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 5eedbe84-e085-474b-a837-c3913c7e5652 | Returned in pristine condition.",
+      "created_at": "2026-07-19T02:37:26.824Z"
+    },
+    {
+      "id": "34039864-6b32-4455-b5a8-043df47824f3",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "borrow_date": "2026-08-06T19:45:07.309Z",
+      "due_date": "2026-08-27T19:45:07.309Z",
+      "return_date": "2026-08-06T19:45:07.353Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 505cdea6-467d-4ed2-8506-c02b40c4c263 | Returned in pristine condition.",
+      "created_at": "2026-08-06T19:45:07.309Z"
+    },
+    {
+      "id": "36cb18d8-7add-43ab-a2b5-cc71209fb534",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "borrow_date": "2026-08-06T19:45:24.927Z",
+      "due_date": "2026-08-27T19:45:24.927Z",
+      "return_date": "2026-08-06T19:45:24.966Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 5e73b912-ca4c-4468-a306-38326fc270d8 | Returned in pristine condition.",
+      "created_at": "2026-08-06T19:45:24.927Z"
+    },
+    {
+      "id": "9c490789-08f9-4d5b-b44a-e149967a1373",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "borrow_date": "2026-08-06T19:46:23.943Z",
+      "due_date": "2026-08-27T19:46:23.943Z",
+      "return_date": "2026-08-06T19:46:23.971Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 1b166e0d-b576-440b-a935-f9cf8885fac5 | Returned in pristine condition.",
+      "created_at": "2026-08-06T19:46:23.943Z"
+    },
+    {
+      "id": "b1069b45-81c7-4043-8a29-8ffed979d5cc",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "borrow_date": "2026-08-06T19:46:38.858Z",
+      "due_date": "2026-08-27T19:46:38.858Z",
+      "return_date": "2026-08-06T19:46:38.885Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: a1cd7a10-ea62-4e96-b1b1-4e65649baae5 | Returned in pristine condition.",
+      "created_at": "2026-08-06T19:46:38.858Z"
+    },
+    {
+      "id": "2a61bbec-ec89-440e-b4df-aa05484cca5a",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "borrow_date": "2026-08-09T15:56:44.491Z",
+      "due_date": "2026-08-30T15:56:44.491Z",
+      "return_date": "2026-08-09T15:56:44.535Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: dc77f846-ff54-43fa-a586-5e0978ff2666 | Returned in pristine condition.",
+      "created_at": "2026-08-09T15:56:44.491Z"
+    },
+    {
+      "id": "6a7ff10f-7260-4e66-9b0d-b2d0bc77536a",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "borrow_date": "2026-08-09T15:56:56.745Z",
+      "due_date": "2026-08-30T15:56:56.745Z",
+      "return_date": "2026-08-09T15:56:56.788Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 6d7d38e2-01b3-4a8d-bd85-09406667c3f2 | Returned in pristine condition.",
+      "created_at": "2026-08-09T15:56:56.746Z"
+    },
+    {
+      "id": "26424608-8e3e-49db-8262-cf8bf4de46da",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "borrow_date": "2026-08-09T16:00:59.858Z",
+      "due_date": "2026-08-30T16:00:59.858Z",
+      "return_date": "2026-08-09T16:00:59.889Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 94a32a52-d91d-44c4-bc46-86cd44c99345 | Returned in pristine condition.",
+      "created_at": "2026-08-09T16:00:59.858Z"
+    },
+    {
+      "id": "7974a0ba-678e-41e3-82f3-9f695f26b917",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "borrow_date": "2026-08-09T16:05:40.720Z",
+      "due_date": "2026-08-30T16:05:40.720Z",
+      "return_date": "2026-08-09T16:05:40.851Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: a3f5aebf-2ff2-470c-af85-b7205cb41ad4 | clean",
+      "created_at": "2026-08-09T16:05:40.720Z"
+    },
+    {
+      "id": "88e5d227-f6d4-436b-9b27-5ab1be0ae060",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "borrow_date": "2026-08-10T03:52:40.981Z",
+      "due_date": "2026-08-31T03:52:40.981Z",
+      "return_date": "2026-08-10T03:52:41.005Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 38d99222-bd33-4d15-ac40-a482fc65430a | API verify return.",
+      "created_at": "2026-08-10T03:52:40.981Z"
+    },
+    {
+      "id": "0e4b04bc-fc70-4ebf-a51a-e4f31ea12690",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "borrow_date": "2026-08-10T04:10:29.627Z",
+      "due_date": "2026-08-31T04:10:29.627Z",
+      "return_date": "2026-08-10T04:10:29.762Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 11447208-75c3-4343-8d84-55dafff2f8ca | Returned in pristine condition.",
+      "created_at": "2026-08-10T04:10:29.627Z"
+    },
+    {
+      "id": "03abdb7a-12fa-4a37-92f1-3f69c5d9a983",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "borrow_date": "2026-08-24T09:22:52.978Z",
+      "due_date": "2026-09-14T09:22:52.978Z",
+      "return_date": "2026-08-24T09:22:53.025Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 2008ed70-f899-4141-b951-ccdd8a65e12c | Returned in pristine condition.",
+      "created_at": "2026-08-24T09:22:52.978Z"
+    },
+    {
+      "id": "3f584801-5eb5-45d4-ae4e-7d35c778d431",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "borrow_date": "2026-08-24T09:27:59.122Z",
+      "due_date": "2026-09-14T09:27:59.122Z",
+      "return_date": "2026-08-24T09:27:59.151Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 23702efb-bd7e-4a59-bb28-f9970292067e | API verify return.",
+      "created_at": "2026-08-24T09:27:59.122Z"
+    },
+    {
+      "id": "13b3208a-6e29-4c37-9fee-e1b7445aad96",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "borrow_date": "2026-08-24T09:28:53.711Z",
+      "due_date": "2026-09-14T09:28:53.711Z",
+      "return_date": "2026-08-24T09:28:53.746Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 750599b7-e05f-4840-b9af-7bec5a015882 | API verify return.",
+      "created_at": "2026-08-24T09:28:53.711Z"
+    },
+    {
+      "id": "496c17bf-fffc-4072-82a3-201c216edbe6",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "borrow_date": "2026-08-24T09:28:59.159Z",
+      "due_date": "2026-09-14T09:28:59.159Z",
+      "return_date": "2026-08-24T09:28:59.195Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 40d73d55-420d-479e-9465-d70669e60378 | Returned in pristine condition.",
+      "created_at": "2026-08-24T09:28:59.159Z"
+    },
+    {
+      "id": "be268e79-47cb-4794-bcd1-3603abd52118",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "borrow_date": "2026-08-24T09:36:12.250Z",
+      "due_date": "2026-09-14T09:36:12.250Z",
+      "return_date": "2026-08-24T09:36:12.290Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: c713a27c-7f7a-455b-9e29-729132adb6bf | Returned in pristine condition.",
+      "created_at": "2026-08-24T09:36:12.250Z"
+    },
+    {
+      "id": "6f46320a-3330-4135-a8ee-497a7b0dff6c",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "borrow_date": "2026-08-24T09:37:50.730Z",
+      "due_date": "2026-09-14T09:37:50.730Z",
+      "return_date": "2026-08-24T09:37:50.766Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: dc5ca5b8-2989-4445-8f0f-a6c410761c7d | API verify return.",
+      "created_at": "2026-08-24T09:37:50.730Z"
+    },
+    {
+      "id": "3e1c7cf4-927a-4363-ba9b-bc7f0160cb02",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "borrow_date": "2026-10-03T18:54:33.980Z",
+      "due_date": "2026-10-24T18:54:33.980Z",
+      "return_date": "2026-10-03T18:54:34.016Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: f1dc980b-7442-499a-9eb9-4d5daef6de41 | Returned in pristine condition.",
+      "created_at": "2026-10-03T18:54:33.981Z"
+    },
+    {
+      "id": "618e4406-d3a2-4399-a4ac-c3fddd8f7f98",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "borrow_date": "2026-10-03T19:39:05.563Z",
+      "due_date": "2026-10-24T19:39:05.563Z",
+      "return_date": "2026-10-03T19:39:05.589Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: c4c298f7-8591-4439-b397-83fbed0199cc | API verify return.",
+      "created_at": "2026-10-03T19:39:05.564Z"
+    },
+    {
+      "id": "f2cf3f03-26d9-4fb5-b432-43e33a973482",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "borrow_date": "2026-10-03T19:41:04.545Z",
+      "due_date": "2026-10-24T19:41:04.545Z",
+      "return_date": "2026-10-03T19:41:04.589Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd | Returned in pristine condition.",
+      "created_at": "2026-10-03T19:41:04.545Z"
+    },
+    {
+      "id": "2f1a6af6-0048-4877-bf6c-4302866a7ac9",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "borrow_date": "2026-10-03T19:41:16.049Z",
+      "due_date": "2026-10-24T19:41:16.049Z",
+      "return_date": "2026-10-03T19:41:16.071Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: 71f8e210-c1b2-4001-87f3-057c3101ee95 | API verify return.",
+      "created_at": "2026-10-03T19:41:16.049Z"
+    },
+    {
+      "id": "ba3a4fbf-8898-4666-b53d-e1ecd8774d8a",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "borrow_date": "2026-10-03T19:46:56.597Z",
+      "due_date": "2026-10-24T19:46:56.597Z",
+      "return_date": "2026-10-03T19:46:56.640Z",
+      "status": "returned",
+      "renewal_count": 1,
+      "fine_amount": 0,
+      "notes": "Checked out by librarian/admin ID: f809ca70-b3be-47e5-bb1b-21ce3b0c81a7 | Returned in pristine condition.",
+      "created_at": "2026-10-03T19:46:56.598Z"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "r1bfe12-70b1-43e3-962c-f3c0115df401",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "9a2bfe12-70b1-43e3-962c-f3c0115df1c0",
+      "reservation_date": "2026-07-19T02:35:34.410Z",
+      "expiry_date": null,
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-07-19T02:35:34.410Z"
+    },
+    {
+      "id": "618575a6-4169-43e6-b238-a0cdc64126be",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "reservation_date": "2026-08-10T03:52:41.018Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-08-10T03:52:41.018Z"
+    },
+    {
+      "id": "75591d86-ce37-459d-b2f5-2bf8346f29d1",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "reservation_date": "2026-08-24T09:27:59.169Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-08-24T09:27:59.169Z"
+    },
+    {
+      "id": "83ad6950-f505-482e-84fb-fb4c8f3d8c0f",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "reservation_date": "2026-08-24T09:28:53.764Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-08-24T09:28:53.764Z"
+    },
+    {
+      "id": "3971a3d7-5d06-4a83-bf83-c4f47e693c3f",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "reservation_date": "2026-08-24T09:37:50.781Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-08-24T09:37:50.781Z"
+    },
+    {
+      "id": "315bda79-5231-409f-95fe-c13af0904b86",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "reservation_date": "2026-10-03T19:39:05.603Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-10-03T19:39:05.603Z"
+    },
+    {
+      "id": "7917e806-28a7-4d58-8e60-3bfab3b31cef",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df203",
+      "patron_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "reservation_date": "2026-10-03T19:41:16.085Z",
+      "status": "pending",
+      "notification_sent": false,
+      "created_at": "2026-10-03T19:41:16.085Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Fiction",
+      "description": "Narrative literature"
+    },
+    {
+      "id": "cat-2",
+      "name": "Science & Technology",
+      "description": "Coding, computer science, maths, engineering"
+    },
+    {
+      "id": "cat-3",
+      "name": "History",
+      "description": "Historical literature and chronicles"
+    },
+    {
+      "id": "cat-4",
+      "name": "Self-Improvement",
+      "description": "Personal development and growth"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "v1bfe12-70b1-43e3-962c-f3c0115df501",
+      "book_id": "b1c2fe12-70b1-43e3-962c-f3c0115df201",
+      "patron_id": "9a2bfe12-70b1-43e3-962c-f3c0115df1c0",
+      "rating": 5,
+      "comment": "Absolutely outstanding structure. Groundbreaking rules for code layout.",
+      "created_at": "2026-07-19T02:35:34.410Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "79fe61f2-1825-498d-ba98-b87994d3d76a",
+      "user_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-10-03T19:46:56.575Z"
+    },
+    {
+      "id": "380ee79f-acbc-46d8-8e2f-a93242985ffd",
+      "user_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-10-03T19:41:15.761Z"
+    },
+    {
+      "id": "34ede63d-27dc-4937-9620-a00d3bd6f606",
+      "user_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-10-03T19:41:04.519Z"
+    },
+    {
+      "id": "97d57c90-a448-40ea-af62-9755d4c1eac3",
+      "user_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-10-03T19:39:05.299Z"
+    },
+    {
+      "id": "dfe342ca-3e6a-43a1-bcaf-9b9bc4156e61",
+      "user_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-10-03T18:54:33.956Z"
+    },
+    {
+      "id": "7caa87c6-2fd0-46e3-926f-7a78dbf526c9",
+      "user_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:37:50.394Z"
+    },
+    {
+      "id": "f96f5583-6159-45c7-b1a7-61156ced6c7c",
+      "user_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:36:12.225Z"
+    },
+    {
+      "id": "7da8a182-7391-4a33-baee-3c005f340437",
+      "user_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:28:59.134Z"
+    },
+    {
+      "id": "829546a1-8df3-46bf-84ba-09b09ccd1ab6",
+      "user_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:28:53.350Z"
+    },
+    {
+      "id": "1e82a9fb-4d55-43b4-81a0-31f58e6ebb0a",
+      "user_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:27:58.774Z"
+    },
+    {
+      "id": "cdd1934f-cf9a-4861-88ee-6a9e10e1ee56",
+      "user_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-24T09:22:52.952Z"
+    },
+    {
+      "id": "07fd482f-f836-4134-89cc-e2a27f189601",
+      "user_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-10T04:10:29.580Z"
+    },
+    {
+      "id": "ed258893-2175-4ffd-8ae2-e7dd022dea74",
+      "user_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-10T03:52:40.694Z"
+    },
+    {
+      "id": "78c18d40-611a-4b90-a8ad-9e24d2199877",
+      "user_id": "e1459f5d-3b51-423f-96b0-7ddc0ba1afc0",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-10T03:50:55.199Z"
+    },
+    {
+      "id": "f72283e9-6c21-490f-ae48-019ecc75bee3",
+      "user_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Verify User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-09T16:05:40.707Z"
+    },
+    {
+      "id": "fa921add-b4fc-4b65-91ff-8a1294a7fc8d",
+      "user_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-09T16:00:59.836Z"
+    },
+    {
+      "id": "b02e915c-570f-4ccc-a6c3-dde7d26c2609",
+      "user_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-09T15:56:56.721Z"
+    },
+    {
+      "id": "64ff695b-8e64-4d40-984b-60e329db0fc2",
+      "user_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-09T15:56:44.469Z"
+    },
+    {
+      "id": "e6148269-495f-4d2a-9ab8-d8ab24567e54",
+      "user_id": "82ea6de7-5fec-4683-9078-dd26c07e7723",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Patron Student, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-06T19:51:38.341Z"
+    },
+    {
+      "id": "ac447c1d-2f6f-49d6-a8e7-74313dbdc6b8",
+      "user_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-06T19:46:38.839Z"
+    },
+    {
+      "id": "4726200d-f160-4dc8-a584-6ef9103b0d54",
+      "user_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-06T19:46:23.923Z"
+    },
+    {
+      "id": "870f2a21-3bb2-4ba8-8fa7-5e5fc739b800",
+      "user_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-06T19:45:24.899Z"
+    },
+    {
+      "id": "7e05c2ce-ee14-4efb-896b-1c4f92d44b10",
+      "user_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-08-06T19:45:07.286Z"
+    },
+    {
+      "id": "260ea9ff-8d98-46e5-92ea-842067822f65",
+      "user_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-07-19T02:37:26.809Z"
+    },
+    {
+      "id": "b85ba9c4-25b4-4e91-a8c1-25365666c38a",
+      "user_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-07-19T02:36:44.003Z"
+    },
+    {
+      "id": "7bb3304d-4b46-47b7-92d9-b9ea1973d21b",
+      "user_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-07-19T02:36:20.753Z"
+    },
+    {
+      "id": "1b77f480-a087-415b-a5d1-23d3aa015e31",
+      "user_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-07-19T02:36:06.828Z"
+    },
+    {
+      "id": "7a954e29-3ff4-4568-b5d8-a2d08ae72978",
+      "user_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "type": "system",
+      "title": "Welcome to the Library!",
+      "message": "Hi Test Patron User, your patron card has been activated!",
+      "is_read": false,
+      "created_at": "2026-07-19T02:35:56.691Z"
+    },
+    {
+      "id": "n1bfe12-70b1-43e3-962c-f3c0115df601",
+      "user_id": "9a2bfe12-70b1-43e3-962c-f3c0115df1c0",
+      "type": "system",
+      "title": "Welcome aboard",
+      "message": "Welcome to the Digital Library! You can search and borrow up to 5 books.",
+      "is_read": false,
+      "created_at": "2026-07-19T02:35:34.410Z"
+    }
+  ],
+  "activity_logs": [
+    {
+      "id": "ba29c6b6-d919-47ba-b282-1e29fdad10a2",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "ba3a4fbf-8898-4666-b53d-e1ecd8774d8a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:46:56.641Z"
+    },
+    {
+      "id": "185c3f92-c10e-4fb0-94ac-52ab47f1187d",
+      "user_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "ba3a4fbf-8898-4666-b53d-e1ecd8774d8a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:46:56.629Z"
+    },
+    {
+      "id": "2da9ec54-a010-488f-9f6d-fecfc55a4d5d",
+      "user_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "ba3a4fbf-8898-4666-b53d-e1ecd8774d8a",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7"
+      },
+      "created_at": "2026-10-03T19:46:56.598Z"
+    },
+    {
+      "id": "bd898f81-9f80-43a1-9c0b-2c61935a3749",
+      "user_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "f809ca70-b3be-47e5-bb1b-21ce3b0c81a7",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-10-03T19:46:56.574Z"
+    },
+    {
+      "id": "fae8b382-887b-4a61-8790-36a80ad1056d",
+      "user_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "7917e806-28a7-4d58-8e60-3bfab3b31cef",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-10-03T19:41:16.086Z"
+    },
+    {
+      "id": "e4189cf3-508c-47ba-9f34-4242776eb2cf",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "2f1a6af6-0048-4877-bf6c-4302866a7ac9",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:41:16.071Z"
+    },
+    {
+      "id": "398c8b94-2473-4e84-b027-06fcebcccb0d",
+      "user_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "2f1a6af6-0048-4877-bf6c-4302866a7ac9",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:41:16.063Z"
+    },
+    {
+      "id": "b391e4e2-21f5-4725-ae21-367ea64c25a9",
+      "user_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "2f1a6af6-0048-4877-bf6c-4302866a7ac9",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "71f8e210-c1b2-4001-87f3-057c3101ee95"
+      },
+      "created_at": "2026-10-03T19:41:16.049Z"
+    },
+    {
+      "id": "a393b3d6-3ca4-4047-890c-2d515221ada6",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "create_book",
+      "entity_type": "books",
+      "entity_id": "2df55252-906a-477e-be61-9edea008fe06",
+      "details": {
+        "title": "Test Book Alpha"
+      },
+      "created_at": "2026-10-03T19:41:16.038Z"
+    },
+    {
+      "id": "b7ba3316-9e9a-4713-ae23-d87d14fb5261",
+      "user_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "71f8e210-c1b2-4001-87f3-057c3101ee95",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-10-03T19:41:15.755Z"
+    },
+    {
+      "id": "05f28755-aaa3-4d29-af2d-e38d45afd860",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "f2cf3f03-26d9-4fb5-b432-43e33a973482",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:41:04.590Z"
+    },
+    {
+      "id": "5ee42b2a-95e7-479e-94e6-ba8eb6321563",
+      "user_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "f2cf3f03-26d9-4fb5-b432-43e33a973482",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:41:04.573Z"
+    },
+    {
+      "id": "bc3b4ddd-bec9-48ed-8259-7cc5b551ac82",
+      "user_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "f2cf3f03-26d9-4fb5-b432-43e33a973482",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd"
+      },
+      "created_at": "2026-10-03T19:41:04.545Z"
+    },
+    {
+      "id": "a179d7ca-c606-421c-a1cd-52eb8c858ddc",
+      "user_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "5fbcb1a7-b80c-4e04-a023-de0a1ebbf9dd",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-10-03T19:41:04.518Z"
+    },
+    {
+      "id": "3cf65687-0f7a-48b9-bf1b-040257fceacf",
+      "user_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "315bda79-5231-409f-95fe-c13af0904b86",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-10-03T19:39:05.603Z"
+    },
+    {
+      "id": "fcc47326-c006-4f0d-a831-a9d7f1b0a379",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "618e4406-d3a2-4399-a4ac-c3fddd8f7f98",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:39:05.589Z"
+    },
+    {
+      "id": "4a58c64c-91a3-4f76-ba3f-9950067fabde",
+      "user_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "618e4406-d3a2-4399-a4ac-c3fddd8f7f98",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T19:39:05.579Z"
+    },
+    {
+      "id": "edb0bfdf-416d-4925-a066-6f988dad368a",
+      "user_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "618e4406-d3a2-4399-a4ac-c3fddd8f7f98",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "c4c298f7-8591-4439-b397-83fbed0199cc"
+      },
+      "created_at": "2026-10-03T19:39:05.564Z"
+    },
+    {
+      "id": "f0e830b0-f742-4b05-9ab2-f0f1ae97c817",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "create_book",
+      "entity_type": "books",
+      "entity_id": "5f94c097-db7a-4ed1-9058-e4abffcc822a",
+      "details": {
+        "title": "Test Book Alpha"
+      },
+      "created_at": "2026-10-03T19:39:05.551Z"
+    },
+    {
+      "id": "066bd0fd-bb89-436a-9873-40ae93cb3bec",
+      "user_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "c4c298f7-8591-4439-b397-83fbed0199cc",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-10-03T19:39:05.297Z"
+    },
+    {
+      "id": "d2521812-31c6-4fcd-bc02-7e3e75be9212",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "3e1c7cf4-927a-4363-ba9b-bc7f0160cb02",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T18:54:34.016Z"
+    },
+    {
+      "id": "cb1171b8-130a-40e3-a81e-3004b1e8a541",
+      "user_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "3e1c7cf4-927a-4363-ba9b-bc7f0160cb02",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-10-03T18:54:34.005Z"
+    },
+    {
+      "id": "a6e98882-d642-4512-bb70-eae281795d67",
+      "user_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "3e1c7cf4-927a-4363-ba9b-bc7f0160cb02",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41"
+      },
+      "created_at": "2026-10-03T18:54:33.981Z"
+    },
+    {
+      "id": "103da7a6-82be-4539-bcd6-7d0bea06b44d",
+      "user_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "f1dc980b-7442-499a-9eb9-4d5daef6de41",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-10-03T18:54:33.953Z"
+    },
+    {
+      "id": "1088c079-ed5f-42c1-9b40-027a840de543",
+      "user_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "3971a3d7-5d06-4a83-bf83-c4f47e693c3f",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-08-24T09:37:50.781Z"
+    },
+    {
+      "id": "1b1f7958-2413-4d0a-956b-0ca743703573",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "6f46320a-3330-4135-a8ee-497a7b0dff6c",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:37:50.766Z"
+    },
+    {
+      "id": "4256a039-6783-43f2-bbcd-f7483414a0e3",
+      "user_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "6f46320a-3330-4135-a8ee-497a7b0dff6c",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:37:50.752Z"
+    },
+    {
+      "id": "5ec9df68-8efe-4b13-92ff-807fb9f561fc",
+      "user_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "6f46320a-3330-4135-a8ee-497a7b0dff6c",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d"
+      },
+      "created_at": "2026-08-24T09:37:50.730Z"
+    },
+    {
+      "id": "1770b387-dbbd-4656-a3e6-fb45d5d78953",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "create_book",
+      "entity_type": "books",
+      "entity_id": "bc7aecc8-fc3d-43ef-a668-0bd5439a5a6e",
+      "details": {
+        "title": "Test Book Alpha"
+      },
+      "created_at": "2026-08-24T09:37:50.717Z"
+    },
+    {
+      "id": "84a2a670-b4d9-4c2b-b5ee-cf8889ba1ab5",
+      "user_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "dc5ca5b8-2989-4445-8f0f-a6c410761c7d",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-24T09:37:50.392Z"
+    },
+    {
+      "id": "ad11f5f7-302b-41dd-8991-4e58cd844328",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "be268e79-47cb-4794-bcd1-3603abd52118",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:36:12.290Z"
+    },
+    {
+      "id": "8ce2f9e3-c491-456b-9580-383deb7efef4",
+      "user_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "be268e79-47cb-4794-bcd1-3603abd52118",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:36:12.277Z"
+    },
+    {
+      "id": "360191b9-0b89-4d89-9dbd-1609a379a3c0",
+      "user_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "be268e79-47cb-4794-bcd1-3603abd52118",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "c713a27c-7f7a-455b-9e29-729132adb6bf"
+      },
+      "created_at": "2026-08-24T09:36:12.250Z"
+    },
+    {
+      "id": "ba3dcc6c-f5a9-47d1-a17e-475c8a075577",
+      "user_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "c713a27c-7f7a-455b-9e29-729132adb6bf",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-24T09:36:12.223Z"
+    },
+    {
+      "id": "b0dfa897-e6f9-4495-9470-d9564b0ba37e",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "496c17bf-fffc-4072-82a3-201c216edbe6",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:28:59.195Z"
+    },
+    {
+      "id": "29df9d3a-0a13-4751-b611-9cab75f803ef",
+      "user_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "496c17bf-fffc-4072-82a3-201c216edbe6",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:28:59.181Z"
+    },
+    {
+      "id": "67c23744-04e4-4784-b100-7e2e82533bf2",
+      "user_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "496c17bf-fffc-4072-82a3-201c216edbe6",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "40d73d55-420d-479e-9465-d70669e60378"
+      },
+      "created_at": "2026-08-24T09:28:59.159Z"
+    },
+    {
+      "id": "cad198ea-4d40-45c2-9061-c6de1b17a90f",
+      "user_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "40d73d55-420d-479e-9465-d70669e60378",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-24T09:28:59.132Z"
+    },
+    {
+      "id": "663b5a6b-f6c9-473c-8590-5c0bded6d6ca",
+      "user_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "83ad6950-f505-482e-84fb-fb4c8f3d8c0f",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-08-24T09:28:53.764Z"
+    },
+    {
+      "id": "a3a5432d-d2e8-4e97-a661-e29047e849a8",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "13b3208a-6e29-4c37-9fee-e1b7445aad96",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:28:53.746Z"
+    },
+    {
+      "id": "cf4d4d68-fe70-4a13-a783-9bdb64a35aca",
+      "user_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "13b3208a-6e29-4c37-9fee-e1b7445aad96",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:28:53.732Z"
+    },
+    {
+      "id": "ef23f83a-7b3d-419d-86e2-b8295b131550",
+      "user_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "13b3208a-6e29-4c37-9fee-e1b7445aad96",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "750599b7-e05f-4840-b9af-7bec5a015882"
+      },
+      "created_at": "2026-08-24T09:28:53.711Z"
+    },
+    {
+      "id": "9a1492e0-f32f-435b-9fa8-5e0f9b85752e",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "create_book",
+      "entity_type": "books",
+      "entity_id": "d652a629-e2c9-4032-9fb2-8135e5452aff",
+      "details": {
+        "title": "Test Book Alpha"
+      },
+      "created_at": "2026-08-24T09:28:53.699Z"
+    },
+    {
+      "id": "6cd206c3-4816-4aaf-940d-8f5e73c043bb",
+      "user_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "750599b7-e05f-4840-b9af-7bec5a015882",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-24T09:28:53.346Z"
+    },
+    {
+      "id": "a4d729c5-3399-4b31-a1c7-f9711782a712",
+      "user_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "75591d86-ce37-459d-b2f5-2bf8346f29d1",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-08-24T09:27:59.169Z"
+    },
+    {
+      "id": "73aa6c17-5fba-455e-b604-a6534ef30463",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "3f584801-5eb5-45d4-ae4e-7d35c778d431",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:27:59.151Z"
+    },
+    {
+      "id": "6598c871-2bfd-4824-a6cc-5300c586190d",
+      "user_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "3f584801-5eb5-45d4-ae4e-7d35c778d431",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:27:59.141Z"
+    },
+    {
+      "id": "526d2972-c2a1-4aed-b2d6-476be7c9e07e",
+      "user_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "3f584801-5eb5-45d4-ae4e-7d35c778d431",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "23702efb-bd7e-4a59-bb28-f9970292067e"
+      },
+      "created_at": "2026-08-24T09:27:59.122Z"
+    },
+    {
+      "id": "56b187f0-4d94-442a-a61f-4576881a5a38",
+      "user_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "23702efb-bd7e-4a59-bb28-f9970292067e",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-24T09:27:58.773Z"
+    },
+    {
+      "id": "691b6abb-a1b7-4145-812b-af19ff392823",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "03abdb7a-12fa-4a37-92f1-3f69c5d9a983",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:22:53.026Z"
+    },
+    {
+      "id": "6509463d-b2e2-4b8c-b266-23124edeca17",
+      "user_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "03abdb7a-12fa-4a37-92f1-3f69c5d9a983",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-24T09:22:53.013Z"
+    },
+    {
+      "id": "263d7364-3f86-4d39-898c-ac81ad181981",
+      "user_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "03abdb7a-12fa-4a37-92f1-3f69c5d9a983",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "2008ed70-f899-4141-b951-ccdd8a65e12c"
+      },
+      "created_at": "2026-08-24T09:22:52.978Z"
+    },
+    {
+      "id": "502d119c-f5cb-4620-807c-baf82f8b7297",
+      "user_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "2008ed70-f899-4141-b951-ccdd8a65e12c",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-24T09:22:52.950Z"
+    },
+    {
+      "id": "7ea8ccae-8798-41d5-8323-7c0b0467fe20",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "0e4b04bc-fc70-4ebf-a51a-e4f31ea12690",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-10T04:10:29.762Z"
+    },
+    {
+      "id": "c8aa7197-035a-4479-932b-7e723348009a",
+      "user_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "0e4b04bc-fc70-4ebf-a51a-e4f31ea12690",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-10T04:10:29.747Z"
+    },
+    {
+      "id": "823cb3c7-0a66-4b66-bf13-ed586ecb3b97",
+      "user_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "0e4b04bc-fc70-4ebf-a51a-e4f31ea12690",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "11447208-75c3-4343-8d84-55dafff2f8ca"
+      },
+      "created_at": "2026-08-10T04:10:29.627Z"
+    },
+    {
+      "id": "820fdff2-24b5-4284-b31e-bc8a745819ce",
+      "user_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "11447208-75c3-4343-8d84-55dafff2f8ca",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-10T04:10:29.553Z"
+    },
+    {
+      "id": "61a26226-9c6a-4cf7-84bf-942cc972f8e2",
+      "user_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "action": "create_reservation",
+      "entity_type": "reservations",
+      "entity_id": "618575a6-4169-43e6-b238-a0cdc64126be",
+      "details": {
+        "book_title": "Head First Design Patterns"
+      },
+      "created_at": "2026-08-10T03:52:41.018Z"
+    },
+    {
+      "id": "91ed3301-8a0e-45d0-a400-4bd1ee1cbc5c",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "88e5d227-f6d4-436b-9b27-5ab1be0ae060",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-10T03:52:41.005Z"
+    },
+    {
+      "id": "316bfd2b-0b7d-4e7a-add2-6998f55bd227",
+      "user_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "88e5d227-f6d4-436b-9b27-5ab1be0ae060",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-10T03:52:40.996Z"
+    },
+    {
+      "id": "a5f669de-349f-482d-8090-1d19f944b50c",
+      "user_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "88e5d227-f6d4-436b-9b27-5ab1be0ae060",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "38d99222-bd33-4d15-ac40-a482fc65430a"
+      },
+      "created_at": "2026-08-10T03:52:40.981Z"
+    },
+    {
+      "id": "66b8e345-b340-4a0a-b1c3-145fedfd52dc",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "create_book",
+      "entity_type": "books",
+      "entity_id": "adf5d3d0-4bc6-40a8-a8ea-52b869e89e6f",
+      "details": {
+        "title": "Test Book Alpha"
+      },
+      "created_at": "2026-08-10T03:52:40.964Z"
+    },
+    {
+      "id": "989e2434-9a4f-4a52-b987-1618442ec040",
+      "user_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "38d99222-bd33-4d15-ac40-a482fc65430a",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-10T03:52:40.692Z"
+    },
+    {
+      "id": "f16d30a9-1346-4677-812a-3b4e198794c6",
+      "user_id": "e1459f5d-3b51-423f-96b0-7ddc0ba1afc0",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "e1459f5d-3b51-423f-96b0-7ddc0ba1afc0",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-10T03:50:55.196Z"
+    },
+    {
+      "id": "1e837e45-0d1f-4fc2-a62d-0b45e1094c52",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "7974a0ba-678e-41e3-82f3-9f695f26b917",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T16:05:40.851Z"
+    },
+    {
+      "id": "98e353dd-fe72-4ab3-b0cc-026216a42283",
+      "user_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "7974a0ba-678e-41e3-82f3-9f695f26b917",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T16:05:40.767Z"
+    },
+    {
+      "id": "53a088a2-a18d-4866-8f0b-89b4bed404ae",
+      "user_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "7974a0ba-678e-41e3-82f3-9f695f26b917",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4"
+      },
+      "created_at": "2026-08-09T16:05:40.720Z"
+    },
+    {
+      "id": "80d1bf04-42d3-42df-be72-067dc2038323",
+      "user_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "a3f5aebf-2ff2-470c-af85-b7205cb41ad4",
+      "details": {
+        "name": "Verify User"
+      },
+      "created_at": "2026-08-09T16:05:40.697Z"
+    },
+    {
+      "id": "bc921516-df34-489d-b5f4-69d0ba566e2b",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "26424608-8e3e-49db-8262-cf8bf4de46da",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T16:00:59.889Z"
+    },
+    {
+      "id": "a0cf5f42-719d-4cf9-8f07-157304b4650a",
+      "user_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "26424608-8e3e-49db-8262-cf8bf4de46da",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T16:00:59.878Z"
+    },
+    {
+      "id": "6a1c1d27-bd87-4e51-bd5f-afc38bc96e53",
+      "user_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "26424608-8e3e-49db-8262-cf8bf4de46da",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "94a32a52-d91d-44c4-bc46-86cd44c99345"
+      },
+      "created_at": "2026-08-09T16:00:59.859Z"
+    },
+    {
+      "id": "5332fcf5-5c40-4227-a28d-d46bccb2a80e",
+      "user_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "94a32a52-d91d-44c4-bc46-86cd44c99345",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-09T16:00:59.834Z"
+    },
+    {
+      "id": "c9f2c3b5-d99a-4d8a-9bfc-9fa9b7e00531",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "6a7ff10f-7260-4e66-9b0d-b2d0bc77536a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T15:56:56.789Z"
+    },
+    {
+      "id": "965d044d-34ee-430d-962e-db0f03057d54",
+      "user_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "6a7ff10f-7260-4e66-9b0d-b2d0bc77536a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T15:56:56.778Z"
+    },
+    {
+      "id": "6b3c3697-8898-4765-a7ef-2ebd3be78cda",
+      "user_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "6a7ff10f-7260-4e66-9b0d-b2d0bc77536a",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2"
+      },
+      "created_at": "2026-08-09T15:56:56.746Z"
+    },
+    {
+      "id": "56fa29ab-d23d-4d86-aef2-aa1d293fe052",
+      "user_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "6d7d38e2-01b3-4a8d-bd85-09406667c3f2",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-09T15:56:56.720Z"
+    },
+    {
+      "id": "a8cf510c-16b5-4a8c-ae97-437ad63dceff",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "2a61bbec-ec89-440e-b4df-aa05484cca5a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T15:56:44.536Z"
+    },
+    {
+      "id": "62106873-71b0-4300-8375-2580087f7c00",
+      "user_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "2a61bbec-ec89-440e-b4df-aa05484cca5a",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-09T15:56:44.518Z"
+    },
+    {
+      "id": "a48d3100-1dec-4ee4-9c5e-ef450d31d550",
+      "user_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "2a61bbec-ec89-440e-b4df-aa05484cca5a",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "dc77f846-ff54-43fa-a586-5e0978ff2666"
+      },
+      "created_at": "2026-08-09T15:56:44.491Z"
+    },
+    {
+      "id": "903b2f49-fa90-4ec7-97df-7bd5b4042b39",
+      "user_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "dc77f846-ff54-43fa-a586-5e0978ff2666",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-09T15:56:44.467Z"
+    },
+    {
+      "id": "e48dc81a-db50-4f1e-a94c-ea5226072446",
+      "user_id": "82ea6de7-5fec-4683-9078-dd26c07e7723",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "82ea6de7-5fec-4683-9078-dd26c07e7723",
+      "details": {
+        "name": "Patron Student"
+      },
+      "created_at": "2026-08-06T19:51:38.337Z"
+    },
+    {
+      "id": "6c8d7543-7bff-47ef-8d75-bf44f469a6a3",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "b1069b45-81c7-4043-8a29-8ffed979d5cc",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:46:38.885Z"
+    },
+    {
+      "id": "a8cb20c4-d533-476a-acab-66fb758d7b8e",
+      "user_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "b1069b45-81c7-4043-8a29-8ffed979d5cc",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:46:38.876Z"
+    },
+    {
+      "id": "2cae3c3a-e3c4-4bbd-8d55-35ece4092951",
+      "user_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "b1069b45-81c7-4043-8a29-8ffed979d5cc",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5"
+      },
+      "created_at": "2026-08-06T19:46:38.858Z"
+    },
+    {
+      "id": "fbd250a1-b040-47e2-ba9f-63dab60ae1db",
+      "user_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "a1cd7a10-ea62-4e96-b1b1-4e65649baae5",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-06T19:46:38.838Z"
+    },
+    {
+      "id": "26273942-ab70-49ba-859d-6e5475fe0746",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "9c490789-08f9-4d5b-b44a-e149967a1373",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:46:23.971Z"
+    },
+    {
+      "id": "8eed6e6d-d2a2-4024-9e62-2d4f763f029d",
+      "user_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "9c490789-08f9-4d5b-b44a-e149967a1373",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:46:23.962Z"
+    },
+    {
+      "id": "146b5f71-1ba4-4c61-a320-7ea91c341703",
+      "user_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "9c490789-08f9-4d5b-b44a-e149967a1373",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "1b166e0d-b576-440b-a935-f9cf8885fac5"
+      },
+      "created_at": "2026-08-06T19:46:23.943Z"
+    },
+    {
+      "id": "4cc4c1a3-8deb-4bb6-a780-6e20b28487a8",
+      "user_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "1b166e0d-b576-440b-a935-f9cf8885fac5",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-06T19:46:23.921Z"
+    },
+    {
+      "id": "f1ab6cc0-fdae-461d-9e23-85f90a8ecfd9",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "36cb18d8-7add-43ab-a2b5-cc71209fb534",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:45:24.966Z"
+    },
+    {
+      "id": "f071fb0a-caaf-4935-acdc-cbfe648e946a",
+      "user_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "36cb18d8-7add-43ab-a2b5-cc71209fb534",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:45:24.954Z"
+    },
+    {
+      "id": "3cb28700-18c6-46b6-a839-05ec035b39ae",
+      "user_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "36cb18d8-7add-43ab-a2b5-cc71209fb534",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "5e73b912-ca4c-4468-a306-38326fc270d8"
+      },
+      "created_at": "2026-08-06T19:45:24.927Z"
+    },
+    {
+      "id": "6919b48d-81d4-4daa-9755-e96c1ca3b0da",
+      "user_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "5e73b912-ca4c-4468-a306-38326fc270d8",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-06T19:45:24.898Z"
+    },
+    {
+      "id": "0ce38fcc-c932-4b23-865a-6cd152cc0903",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "34039864-6b32-4455-b5a8-043df47824f3",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:45:07.353Z"
+    },
+    {
+      "id": "fc9de96b-af64-427c-9d09-4b326182b005",
+      "user_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "34039864-6b32-4455-b5a8-043df47824f3",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-08-06T19:45:07.341Z"
+    },
+    {
+      "id": "a08aa57a-7163-421c-9166-41f0cb272aad",
+      "user_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "34039864-6b32-4455-b5a8-043df47824f3",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "505cdea6-467d-4ed2-8506-c02b40c4c263"
+      },
+      "created_at": "2026-08-06T19:45:07.309Z"
+    },
+    {
+      "id": "023e3fb8-4b08-44f0-b510-a7c6e1e3db54",
+      "user_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "505cdea6-467d-4ed2-8506-c02b40c4c263",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-08-06T19:45:07.283Z"
+    },
+    {
+      "id": "b4a2a67e-c583-4a97-bf9a-c64a45251263",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "23e523ef-88ec-4bcc-b80b-05df3db8ce71",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:37:26.849Z"
+    },
+    {
+      "id": "5c60469b-dd09-45c0-a0de-b8f739e0aa67",
+      "user_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "23e523ef-88ec-4bcc-b80b-05df3db8ce71",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:37:26.841Z"
+    },
+    {
+      "id": "e92310ea-07de-4009-9ed9-ac22ed5c8a9a",
+      "user_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "23e523ef-88ec-4bcc-b80b-05df3db8ce71",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "5eedbe84-e085-474b-a837-c3913c7e5652"
+      },
+      "created_at": "2026-07-19T02:37:26.824Z"
+    },
+    {
+      "id": "f07910fe-8964-4bf4-b7eb-d7f714b886d6",
+      "user_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "5eedbe84-e085-474b-a837-c3913c7e5652",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-07-19T02:37:26.808Z"
+    },
+    {
+      "id": "724084d7-41ed-44c1-9385-61c338f426f3",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "2eacca1b-931c-4cf2-9002-46c0a0cc0461",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:44.048Z"
+    },
+    {
+      "id": "af388cfe-6543-4b83-a40c-fcf13de5e860",
+      "user_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "2eacca1b-931c-4cf2-9002-46c0a0cc0461",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:44.038Z"
+    },
+    {
+      "id": "8e969ea5-75ce-4902-9df8-5c569669bf9b",
+      "user_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "2eacca1b-931c-4cf2-9002-46c0a0cc0461",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "3af60b69-d584-42d1-aae9-e467eaa1737a"
+      },
+      "created_at": "2026-07-19T02:36:44.021Z"
+    },
+    {
+      "id": "f4b892d2-bc82-40ed-9676-72003d96bae3",
+      "user_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "3af60b69-d584-42d1-aae9-e467eaa1737a",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-07-19T02:36:44.002Z"
+    },
+    {
+      "id": "caa4cb49-c8ba-4efb-b971-88a108388661",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "60a3b957-60f0-4e35-8e85-dfc3b3066e46",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:20.797Z"
+    },
+    {
+      "id": "756bda8d-ebb7-4ac9-86a0-e344576512bb",
+      "user_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "60a3b957-60f0-4e35-8e85-dfc3b3066e46",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:20.788Z"
+    },
+    {
+      "id": "df4a4008-4ff4-4aad-ad03-d41ca997d409",
+      "user_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "60a3b957-60f0-4e35-8e85-dfc3b3066e46",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485"
+      },
+      "created_at": "2026-07-19T02:36:20.770Z"
+    },
+    {
+      "id": "d3f1c67d-56bc-42dc-9454-1c1963553988",
+      "user_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "1e0a0fac-1d98-4ca6-8361-ee6c6b4db485",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-07-19T02:36:20.752Z"
+    },
+    {
+      "id": "7624a229-9126-4f5e-976f-fe1fe32d8936",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "26b924ee-97c1-485c-8893-f29269607ac8",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:06.871Z"
+    },
+    {
+      "id": "e3315250-6c34-44cd-91c8-9e9b1ea75d51",
+      "user_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "26b924ee-97c1-485c-8893-f29269607ac8",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:36:06.863Z"
+    },
+    {
+      "id": "515ce0bf-7352-4058-b25a-986ca7d2c71e",
+      "user_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "26b924ee-97c1-485c-8893-f29269607ac8",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f"
+      },
+      "created_at": "2026-07-19T02:36:06.846Z"
+    },
+    {
+      "id": "bc73c42d-bf03-4808-843a-92becada1d84",
+      "user_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "d4aac797-6308-45f7-a98f-ceec4fb20b3f",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-07-19T02:36:06.827Z"
+    },
+    {
+      "id": "9475d07f-4266-421a-8440-e5c372567245",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "return_book",
+      "entity_type": "borrowings",
+      "entity_id": "69e6883f-5992-48e3-b420-e1886f51d060",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:35:56.752Z"
+    },
+    {
+      "id": "ebac3ef3-e002-4c3d-a469-ab849b0a733c",
+      "user_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "action": "renew_book",
+      "entity_type": "borrowings",
+      "entity_id": "69e6883f-5992-48e3-b420-e1886f51d060",
+      "details": {
+        "book_title": "Clean Code"
+      },
+      "created_at": "2026-07-19T02:35:56.740Z"
+    },
+    {
+      "id": "a281da65-7fea-4d02-a158-a7d249f974f2",
+      "user_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "action": "checkout_book",
+      "entity_type": "borrowings",
+      "entity_id": "69e6883f-5992-48e3-b420-e1886f51d060",
+      "details": {
+        "book_title": "Clean Code",
+        "patron_id": "b1e574c1-f09a-4bce-8c87-db264abb1925"
+      },
+      "created_at": "2026-07-19T02:35:56.717Z"
+    },
+    {
+      "id": "1ba80ccf-39ad-41da-964b-5eaf568bd97c",
+      "user_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "action": "register",
+      "entity_type": "profiles",
+      "entity_id": "b1e574c1-f09a-4bce-8c87-db264abb1925",
+      "details": {
+        "name": "Test Patron User"
+      },
+      "created_at": "2026-07-19T02:35:56.689Z"
+    },
+    {
+      "id": "a1c2fe12-70b1-43e3-962c-f3c0115df701",
+      "user_id": "7a1bfe12-70b1-43e3-962c-f3c0115df1a0",
+      "action": "system_init",
+      "entity_type": "system",
+      "entity_id": null,
+      "details": {
+        "message": "Mock databases seeded and running."
+      },
+      "created_at": "2026-07-19T02:35:34.410Z"
+    }
+  ]
+}

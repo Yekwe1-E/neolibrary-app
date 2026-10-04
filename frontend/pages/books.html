@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Catalog — NeoLibrary</title>
+  <meta name="description" content="Browse, search and discover thousands of books in the NeoLibrary catalog.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- ── NAVBAR ────────────────────────────────────────── -->
+  <nav class="navbar" id="main-navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo">
+        <i class="ph ph-books"></i>
+        NeoLibrary
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/pages/books.html" class="active">Catalog</a>
+        <a href="/pages/dashboard.html" id="nav-dashboard" style="display:none;">Dashboard</a>
+      </div>
+      <div class="nav-actions" id="auth-section">
+        <a href="/pages/login.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="/pages/register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+      <button class="menu-toggle" id="mobile-menu-btn" style="display:none;">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── CATALOG HEADER ─────────────────────────────────── -->
+  <header class="catalog-header">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+        <a href="/" style="color:var(--clr-text-faint);font-size:0.875rem;">Home</a>
+        <i class="ph ph-caret-right" style="color:var(--clr-text-faint);font-size:0.875rem;"></i>
+        <span style="color:var(--clr-text-muted);font-size:0.875rem;">Catalog</span>
+      </div>
+      <h1>Book Catalog</h1>
+      <p>Browse, search, and discover thousands of titles in our collection.</p>
+    </div>
+  </header>
+
+  <!-- ── MAIN CONTENT ────────────────────────────────────── -->
+  <main style="padding: 2.5rem 0 5rem; min-height: 55vh;">
+    <div class="container">
+
+      <!-- Filters -->
+      <div class="filters-bar">
+        <div class="filter-item" style="flex:2;min-width:240px;">
+          <div class="input-group">
+            <i class="ph ph-magnifying-glass input-icon"></i>
+            <input type="text" id="search-input" class="form-control" placeholder="Search title, author, or ISBN…">
+          </div>
+        </div>
+        <div class="filter-item">
+          <select id="genre-filter" class="form-control">
+            <option value="">All Genres</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Science &amp; Technology">Science &amp; Technology</option>
+            <option value="History">History</option>
+            <option value="Self-Improvement">Self-Improvement</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Biography">Biography</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <select id="avail-filter" class="form-control">
+            <option value="">Availability: All</option>
+            <option value="available">In Stock Only</option>
+            <option value="out_of_stock">Out of Stock</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-shrink:0;">
+          <button id="apply-filters" class="btn btn-primary">
+            <i class="ph ph-funnel"></i> Filter
+          </button>
+          <button id="clear-filters" class="btn btn-ghost">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Results info -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;" id="results-meta" style="display:none;">
+        <p class="text-muted text-sm" id="results-count"></p>
+      </div>
+
+      <!-- Books Grid -->
+      <div class="books-grid" id="catalog-grid">
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination-controls"></div>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navbar auth state
+      const navbar = document.getElementById('main-navbar');
+      window.addEventListener('scroll', () => navbar?.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+      if (window.Auth && window.Auth.isAuthenticated()) {
+        const navDash = document.getElementById('nav-dashboard');
+        if (navDash) navDash.style.display = 'inline-block';
+        const authSection = document.getElementById('auth-section');
+        const u = window.Auth.getUser();
+        if (authSection && u) {
+          authSection.innerHTML = `
+            <div class="user-chip" onclick="window.location.href='/pages/dashboard.html'">
+              <img src="${u.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(u.full_name)}`}" alt="Avatar">
+              <span class="chip-name">${u.full_name.split(' ')[0]}</span>
+            </div>`;
+        }
+      }
+
+      // Mobile nav
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+        document.querySelector('.nav-links')?.classList.toggle('open');
+      });
+
+      let currentPage = 1;
+      const urlParams     = new URLSearchParams(window.location.search);
+      const initialSearch = urlParams.get('search') || '';
+      const initialGenre  = urlParams.get('genre')  || '';
+      if (initialSearch) document.getElementById('search-input').value = initialSearch;
+      if (initialGenre)  document.getElementById('genre-filter').value  = initialGenre;
+
+      const PLACEHOLDER = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='420'%3E%3Crect width='100%25' height='100%25' fill='%236366f1' rx='8'/%3E%3Ctext x='50%25' y='45%25' fill='white' font-size='20' font-family='sans-serif' font-weight='bold' text-anchor='middle'%3ENeoLibrary%3C/text%3E%3Ctext x='50%25' y='58%25' fill='%23c7d2fe' font-size='14' font-family='sans-serif' text-anchor='middle'%3EBook Cover%3C/text%3E%3C/svg%3E`;
+
+      const fetchBooks = async (page = 1) => {
+        const grid = document.getElementById('catalog-grid');
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:4rem;">
+          <i class="ph ph-spinner ph-spin" style="font-size:2rem;color:var(--clr-primary-bright);"></i>
+          <p class="text-muted" style="margin-top:0.75rem;">Loading library…</p>
+        </div>`;
+
+        const search = document.getElementById('search-input').value.trim();
+        const genre  = document.getElementById('genre-filter').value;
+        const avail  = document.getElementById('avail-filter').value;
+
+        let query = `/books?page=${page}&limit=12`;
+        if (search) query += `&search=${encodeURIComponent(search)}`;
+        if (genre)  query += `&genre=${encodeURIComponent(genre)}`;
+        if (avail)  query += `&availability=${avail}`;
+
+        try {
+          const res = await window.api.get(query);
+          if (res.status === 'success') {
+            currentPage = res.page;
+            renderBooks(res.books, res.total || 0);
+            renderPagination(res.page, res.pages);
+          }
+        } catch (err) {
+          grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;">
+            <i class="ph ph-warning-circle" style="font-size:2rem;color:var(--clr-danger);"></i>
+            <p style="color:var(--clr-danger);margin-top:0.5rem;">${err.message}</p>
+          </div>`;
+        }
+      };
+
+      const renderBooks = (books, total) => {
+        const grid = document.getElementById('catalog-grid');
+        const meta = document.getElementById('results-count');
+        if (meta) meta.textContent = total ? `${total} results found` : '';
+
+        if (!books || books.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:4rem;background:var(--clr-bg-surface);border:1px dashed var(--clr-border);border-radius:var(--radius-xl);">
+            <i class="ph ph-magnifying-glass" style="font-size:3rem;color:var(--clr-text-faint);"></i>
+            <h3 style="margin-top:1rem;font-size:1.25rem;">No books found</h3>
+            <p class="text-muted" style="margin-top:0.5rem;">Try adjusting your search or filters.</p>
+          </div>`;
+          return;
+        }
+
+        grid.innerHTML = books.map(book => {
+          const badge = book.available_copies > 0
+            ? `<div class="status-badge status-available">Available</div>`
+            : `<div class="status-badge status-borrowed">Borrowed</div>`;
+
+          return `
+            <div class="card book-card">
+              <a href="/pages/book-detail.html?id=${book.id}" class="book-cover-wrap">
+                ${badge}
+                <img src="${book.cover_image_url || PLACEHOLDER}" alt="${book.title} Cover" loading="lazy"
+                     onerror="this.onerror=null;this.src='${PLACEHOLDER}';">
+              </a>
+              <div class="book-info">
+                <a href="/pages/book-detail.html?id=${book.id}">
+                  <h3 class="book-title">${book.title}</h3>
+                </a>
+                <p class="book-author">${book.author}</p>
+                <div class="book-actions" style="margin-top:auto;">
+                  <span class="badge ${book.available_copies > 0 ? 'badge-success' : 'badge-warning'}">
+                    ${book.available_copies > 0 ? book.available_copies + ' copies' : 'Out of stock'}
+                  </span>
+                </div>
+              </div>
+            </div>`;
+        }).join('');
+      };
+
+      const renderPagination = (current, total) => {
+        const container = document.getElementById('pagination-controls');
+        if (total <= 1) { container.innerHTML = ''; return; }
+
+        const maxVisible = 7;
+        let pages = [];
+        if (total <= maxVisible) {
+          pages = Array.from({ length: total }, (_, i) => i + 1);
+        } else {
+          pages = [1];
+          if (current > 3)       pages.push('…');
+          for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) pages.push(i);
+          if (current < total - 2) pages.push('…');
+          pages.push(total);
+        }
+
+        container.innerHTML = pages.map(p =>
+          p === '…'
+            ? `<span style="padding:0.5rem 0.25rem;color:var(--clr-text-faint);">…</span>`
+            : `<button class="page-btn ${p === current ? 'active' : ''}" data-page="${p}">${p}</button>`
+        ).join('');
+
+        container.querySelectorAll('.page-btn').forEach(btn => {
+          btn.addEventListener('click', e => {
+            fetchBooks(parseInt(e.currentTarget.dataset.page));
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+          });
+        });
+      };
+
+      document.getElementById('apply-filters').addEventListener('click', () => fetchBooks(1));
+      document.getElementById('clear-filters').addEventListener('click', () => {
+        document.getElementById('search-input').value = '';
+        document.getElementById('genre-filter').value  = '';
+        document.getElementById('avail-filter').value  = '';
+        fetchBooks(1);
+      });
+      document.getElementById('search-input').addEventListener('keypress', e => {
+        if (e.key === 'Enter') fetchBooks(1);
+      });
+
+      fetchBooks(1);
+    });
+  </script>
+</body>
+</html>

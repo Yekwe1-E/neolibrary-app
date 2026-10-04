@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management — NeoLibrary Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    dialog {
+      background: var(--clr-bg-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl);
+      color: var(--clr-text);
+      max-width: 500px;
+      width: 90%;
+      padding: 0;
+      box-shadow: var(--shadow-2xl);
+    }
+    dialog::backdrop {
+      background: rgba(5, 7, 13, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--clr-border-subtle);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--clr-border-subtle);
+      display: flex; justify-content: flex-end; gap: 0.75rem; background: rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body class="app-layout">
+  
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+      <div class="dash-section">
+        <div style="margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 700;">Patrons & Staff Directory</h2>
+          <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">Audit role clearances, inspect patron borrowing records, and update access permissions.</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+          <div style="position: relative; flex: 1; max-width: 420px;">
+            <i class="ph ph-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);"></i>
+            <input type="text" id="search-box" class="form-control" placeholder="Search by name, email..." style="padding-left: 2.75rem;">
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="table" id="users-table">
+            <thead>
+              <tr>
+                <th>Profile</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Membership Date</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS Injected -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Role Modify dialog -->
+  <dialog id="role-modal">
+    <div class="modal-header">
+      <h3 style="font-size: 1.15rem; font-weight: 700;">Adjust Access Role</h3>
+      <button type="button" class="btn btn-ghost" id="close-role-x" style="padding: 0.25rem 0.5rem;"><i class="ph ph-x" style="font-size: 1.25rem;"></i></button>
+    </div>
+    <form id="role-form">
+      <div class="modal-body">
+        <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1.25rem;">Select role tier assignment for this user profile.</p>
+        <input type="hidden" id="role-user-id">
+        <div class="form-group">
+          <label for="new-role" class="form-label">System Role</label>
+          <select id="new-role" class="form-control">
+            <option value="patron">Patron (Standard Library User)</option>
+            <option value="librarian">Librarian (Book & Checkout Manager)</option>
+            <option value="admin">System Admin (Full Clearances)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="close-role-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Update Role</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- View History Modal -->
+  <dialog id="history-modal" style="max-width: 760px;">
+    <div class="modal-header">
+      <h3 style="font-size: 1.15rem; font-weight: 700;">Patron Borrowing History</h3>
+      <button type="button" class="btn btn-ghost" onclick="document.getElementById('history-modal').close()" style="padding: 0.25rem 0.5rem;"><i class="ph ph-x" style="font-size: 1.25rem;"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="table-wrapper" style="max-height: 380px; overflow-y: auto;">
+        <table class="table" id="patron-loans-table">
+          <thead>
+            <tr>
+              <th>Book Title</th>
+              <th>Checkout Date</th>
+              <th>Due Date</th>
+              <th>Return Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JS Injected -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" onclick="document.getElementById('history-modal').close()">Close</button>
+    </div>
+  </dialog>
+
+  <div id="toast-container" class="toast-container"></div>
+  
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/ui.js"></script>
+  <script src="../../js/nav.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAdminOrLibrarian();
+      const user = window.Auth.getUser();
+
+      window.NavComponent.init({
+        activePage: 'user-management',
+        pageTitle: 'User Directory'
+      });
+
+      const refreshUsers = async () => {
+        try {
+          const search = document.getElementById('search-box').value.trim().toLowerCase();
+          const res = await window.api.get('/users');
+          let list = res.data || [];
+
+          if (search) {
+            list = list.filter(u => u.full_name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search));
+          }
+
+          const tbody = document.querySelector('#users-table tbody');
+          if (list.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted" style="padding: 3rem;">No users found.</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = list.map(u => {
+            let roleBadge = '<span class="badge badge-neutral">Patron</span>';
+            if (u.role === 'admin') roleBadge = '<span class="badge badge-primary"><i class="ph ph-shield-check"></i> Admin</span>';
+            else if (u.role === 'librarian') roleBadge = '<span class="badge badge-gold"><i class="ph ph-books"></i> Librarian</span>';
+
+            return `
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="${u.avatar_url || 'https://api.dicebear.com/7.x/initials/svg?seed=' + encodeURIComponent(u.full_name)}" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--clr-border);">
+                    <strong style="color: var(--clr-text);">${u.full_name}</strong>
+                  </div>
+                </td>
+                <td><span class="text-muted">${u.email}</span></td>
+                <td>${roleBadge}</td>
+                <td>
+                  <span class="badge ${u.status === 'active' ? 'badge-success' : 'badge-danger'}">
+                    ${u.status}
+                  </span>
+                </td>
+                <td><span class="text-muted">${window.formatDate(u.membership_date)}</span></td>
+                <td style="text-align: right;">
+                  <div style="display: flex; gap: 0.35rem; justify-content: flex-end;">
+                    <button class="btn btn-outline" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="openRoleModal('${u.id}', '${u.role}')" title="Configure Role"><i class="ph ph-user-gear"></i></button>
+                    <button class="btn btn-outline" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="viewPatronHistory('${u.id}')" title="View Borrowings"><i class="ph ph-clock-counter-clockwise"></i></button>
+                    ${u.status === 'active' && u.id !== user.id
+                       ? `<button class="btn btn-danger" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="suspendUser('${u.id}')" title="Suspend User"><i class="ph ph-user-minus"></i></button>`
+                       : ''}
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+
+        } catch (e) {
+          window.showToast("Failed to fetch user directory: " + e.message, "error");
+        }
+      };
+
+      // Search box quick binding
+      document.getElementById('search-box').addEventListener('input', () => refreshUsers());
+
+      // Role modal setup
+      const roleModal = document.getElementById('role-modal');
+      window.openRoleModal = (id, curRole) => {
+        document.getElementById('role-user-id').value = id;
+        document.getElementById('new-role').value = curRole;
+        roleModal.showModal();
+      };
+      
+      document.getElementById('close-role-btn').addEventListener('click', () => roleModal.close());
+      document.getElementById('close-role-x').addEventListener('click', () => roleModal.close());
+
+      document.getElementById('role-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('role-user-id').value;
+        const role = document.getElementById('new-role').value;
+
+        try {
+          await window.api.put(`/users/${id}/role`, { role });
+          window.showToast("Patron access role modified.", "success");
+          roleModal.close();
+          refreshUsers();
+        } catch (err) {
+          window.showToast(err.message, "error");
+        }
+      });
+
+      // Suspend Patron call
+      window.suspendUser = async (id) => {
+        if (!confirm("Are you sure you want to suspend this user account?")) return;
+        try {
+          await window.api.delete(`/users/${id}`);
+          window.showToast("Patron profile suspended.", "success");
+          refreshUsers();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      // View patron details
+      const historyModal = document.getElementById('history-modal');
+      window.viewPatronHistory = async (id) => {
+        try {
+          const res = await window.api.get(`/users/${id}/borrowings`);
+          const loans = res.data || [];
+
+          const tbody = document.querySelector('#patron-loans-table tbody');
+          if (loans.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted" style="padding: 2rem;">No borrowings on record.</td></tr>';
+          } else {
+            tbody.innerHTML = loans.map(l => {
+              let returnAction = '';
+              let statusLabel = '';
+
+              if (l.return_date) {
+                statusLabel = `<span class="badge badge-success">Returned</span>`;
+              } else {
+                const isOverdue = new Date(l.due_date) < new Date();
+                statusLabel = isOverdue ? `<span class="badge badge-danger">Overdue</span>` : `<span class="badge badge-warning">Active</span>`;
+                returnAction = `<button class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;" onclick="processStaffReturn('${l.id}')">Return</button>`;
+              }
+
+              return `
+                <tr>
+                  <td><strong style="color: var(--clr-text);">${l.book?.title || 'Book reference'}</strong></td>
+                  <td><span class="text-muted">${window.formatDate(l.borrow_date)}</span></td>
+                  <td><span class="text-muted">${window.formatDate(l.due_date)}</span></td>
+                  <td><span class="text-muted">${l.return_date ? window.formatDate(l.return_date) : 'Outstanding'}</span></td>
+                  <td>${statusLabel}</td>
+                  <td>${returnAction}</td>
+                </tr>
+              `;
+            }).join('');
+          }
+          historyModal.showModal();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      window.processStaffReturn = async (borrowingId) => {
+        if (!confirm("Confirm book return?")) return;
+        try {
+          const notes = prompt("Enter return observations (optional):") || "";
+          await window.api.put(`/borrowings/${borrowingId}/return`, { notes });
+          window.showToast("Book returned and inventory updated.", "success");
+          historyModal.close();
+          refreshUsers();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      // Initial run
+      refreshUsers();
+    });
+  </script>
+</body>
+</html>

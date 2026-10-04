@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — NeoLibrary</title>
+  <meta name="description" content="Sign in to your NeoLibrary account to access your library card, borrowings, and reservations.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    body { overflow: hidden; }
+    @media (max-width: 1024px) { body { overflow: auto; } }
+
+    .password-toggle {
+      position: absolute; right: 0.875rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--clr-text-faint);
+      cursor: pointer; font-size: 1.1rem; padding: 0;
+      transition: color var(--dur-fast) var(--ease-normal);
+    }
+    .password-toggle:hover { color: var(--clr-text-muted); }
+    .input-group { position: relative; }
+    .input-group .form-control { padding-right: 2.75rem; }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+
+    <!-- Left Panel -->
+    <div class="auth-left">
+      <div class="auth-left-inner animate-fade-in-up">
+        <a href="/" class="auth-logo">
+          <i class="ph ph-books"></i>
+          NeoLibrary
+        </a>
+
+        <h2>
+          Welcome back<br>
+          <span class="gradient-text">to your library.</span>
+        </h2>
+
+        <p>
+          Sign in to browse thousands of books, manage your borrowings, track reservations,
+          and access everything on your digital library card.
+        </p>
+
+        <ul class="auth-feature-list">
+          <li><i class="ph ph-check-circle"></i> Instant access to 2,500+ titles</li>
+          <li><i class="ph ph-check-circle"></i> Smart reservation queueing</li>
+          <li><i class="ph ph-check-circle"></i> Fine tracking & online payment</li>
+          <li><i class="ph ph-check-circle"></i> Renewal reminders & notifications</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="auth-right">
+      <div class="auth-right-inner animate-fade-in-up">
+        <a href="/" class="auth-logo">
+          <i class="ph ph-books"></i>
+          NeoLibrary
+        </a>
+
+        <h1 class="auth-form-title">Sign in</h1>
+        <p class="auth-form-sub">Don't have an account? <a href="/pages/register.html">Create one free</a></p>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <i class="ph ph-envelope input-icon"></i>
+              <input type="email" id="email" class="form-control" required
+                     placeholder="you@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group" style="position:relative;">
+              <i class="ph ph-lock input-icon"></i>
+              <input type="password" id="password" class="form-control" required
+                     placeholder="••••••••" autocomplete="current-password" style="padding-left:2.625rem;">
+              <button type="button" class="password-toggle" id="toggle-pwd" title="Toggle visibility">
+                <i class="ph ph-eye" id="pwd-eye-icon"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" id="login-btn">
+            <i class="ph ph-sign-in"></i>
+            Sign In
+          </button>
+        </form>
+
+        <div class="auth-divider">── or ──</div>
+
+        <a href="/pages/register.html" class="btn btn-outline" style="width:100%;justify-content:center;">
+          <i class="ph ph-user-plus"></i>
+          Create new account
+        </a>
+
+        <p class="auth-footer-link">
+          <a href="/">← Back to homepage</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.Auth.redirectIfAuthenticated();
+
+      const urlParams  = new URLSearchParams(window.location.search);
+      if (urlParams.get('expired') === 'true') {
+        window.showToast("Your session has expired. Please log in again.", "warning");
+      }
+      const redirectUri = urlParams.get('redirect') || '/pages/dashboard.html';
+
+      // Password visibility toggle
+      const toggleBtn  = document.getElementById('toggle-pwd');
+      const pwdInput   = document.getElementById('password');
+      const eyeIcon    = document.getElementById('pwd-eye-icon');
+      toggleBtn.addEventListener('click', () => {
+        const isText = pwdInput.type === 'text';
+        pwdInput.type      = isText ? 'password' : 'text';
+        eyeIcon.className  = isText ? 'ph ph-eye' : 'ph ph-eye-slash';
+      });
+
+      // Form submit
+      const loginForm = document.getElementById('login-form');
+      const loginBtn  = document.getElementById('login-btn');
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        try {
+          loginBtn.disabled  = true;
+          loginBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Signing in…';
+
+          const response = await window.api.post('/auth/login', { email, password });
+
+          if (response.status === 'success') {
+            window.showToast("Welcome back! Redirecting…", "success");
+            window.Auth.setSession(response.data.token, response.data.user);
+            setTimeout(() => { window.location.href = redirectUri; }, 800);
+          }
+        } catch (error) {
+          window.showToast(error.message, "error");
+        } finally {
+          loginBtn.disabled  = false;
+          loginBtn.innerHTML = '<i class="ph ph-sign-in"></i> Sign In';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

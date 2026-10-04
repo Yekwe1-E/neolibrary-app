@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Settings — NeoLibrary Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .settings-container { max-width: 800px; margin: 0 auto; }
+  </style>
+</head>
+<body class="app-layout">
+  
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+      <div class="settings-container">
+        
+        <div class="dash-section" style="margin-bottom: 2rem;">
+          <div style="margin-bottom: 1.75rem;">
+            <h2 style="font-size: 1.35rem; font-weight: 700;">Borrowing Rules & Policy Engine</h2>
+            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">Configure global system parameters, loan durations, and automated fine rate triggers.</p>
+          </div>
+          
+          <form id="settings-form">
+            <div class="form-group">
+              <label for="loan-period" class="form-label">Default Loan Period Duration (Days)</label>
+              <input type="number" id="loan-period" class="form-control" value="14" min="1" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="max-loans" class="form-label">Max Active Borrowings Per Patron</label>
+              <input type="number" id="max-loans" class="form-control" value="5" min="1" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="fine-rate" class="form-label">Daily Overdue Fine Rate (₦)</label>
+              <input type="number" id="fine-rate" class="form-control" value="50" min="0" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reservation-window" class="form-label">Fulfillment Hold Window (Hours)</label>
+              <input type="number" id="reservation-window" class="form-control" value="48" min="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+              <i class="ph ph-floppy-disk"></i> Save Configurations
+            </button>
+          </form>
+        </div>
+
+        <div class="dash-section" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.03);">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <i class="ph ph-warning-octagon" style="font-size: 1.5rem; color: var(--clr-danger-bright);"></i>
+            <h3 style="color: var(--clr-danger-bright); font-size: 1.15rem; font-weight: 700; margin: 0;">Database Maintenance Actions</h3>
+          </div>
+          <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.875rem;">
+            Danger Zone. Restore system state, purge cached session tokens, or reset local mock datastore to seed defaults.
+          </p>
+          
+          <button class="btn btn-danger" id="reset-db-btn">
+            <i class="ph ph-trash"></i> Reset Database to Seed Defaults
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/ui.js"></script>
+  <script src="../../js/nav.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAdminOrLibrarian();
+      
+      window.NavComponent.init({
+        activePage: 'settings',
+        pageTitle: 'System Settings'
+      });
+
+      document.getElementById('settings-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        window.showToast("System policies updated successfully.", "success");
+      });
+
+      document.getElementById('reset-db-btn').addEventListener('click', () => {
+        if (!confirm("Are you sure you want to restore Mock DB store to pristine seeds? All local transactions will be lost.")) return;
+        
+        localStorage.clear();
+        window.showToast("Database & sessions purged successfully. Redirecting...", "error");
+        setTimeout(() => {
+          window.location.href = '/pages/login.html';
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>
+

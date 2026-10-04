@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Analytics — NeoLibrary Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .report-select-bar { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: flex-end; flex-wrap: wrap; }
+  </style>
+</head>
+<body class="app-layout">
+  
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+      <div class="dash-section">
+        <div style="margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 700;">System Analytics & Intelligence</h2>
+          <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">Audit library popularity indices, overdue fine aggregates, and borrow metrics in real time.</p>
+        </div>
+
+        <div class="report-select-bar" style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: var(--radius-lg); border: 1px solid var(--clr-border-subtle);">
+          <div style="flex: 1; min-width: 260px;">
+            <label for="report-type" class="form-label" style="margin-bottom: 0.5rem;">Select Analytics Ledger</label>
+            <select id="report-type" class="form-control">
+              <option value="popular_books">Popular Books & Borrowing Frequency</option>
+              <option value="overdue_analysis">Overdue Loans & Fine Accumulation Audit</option>
+              <option value="borrowing_trends">Daily Borrowing Trends Ledger</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="run-report-btn">
+            <i class="ph ph-chart-line-up"></i> Generate Report
+          </button>
+          <button class="btn btn-outline" id="export-report-btn" style="display: none;">
+            <i class="ph ph-download-simple"></i> Export CSV Log
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="table" id="report-table">
+            <thead id="report-thead">
+              <!-- JS Injected -->
+            </thead>
+            <tbody id="report-tbody">
+              <tr>
+                <td class="text-center text-muted" style="padding: 4rem 1rem;">
+                  <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: var(--clr-text-faint);"><i class="ph ph-chart-bar"></i></div>
+                  <div>Select a report type and click <strong>"Generate Report"</strong> to load analytics.</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/ui.js"></script>
+  <script src="../../js/nav.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAdminOrLibrarian();
+      
+      window.NavComponent.init({
+        activePage: 'reports',
+        pageTitle: 'Analytics & Reports'
+      });
+
+      const reportHead = document.getElementById('report-thead');
+      const reportBody = document.getElementById('report-tbody');
+      const exportBtn = document.getElementById('export-report-btn');
+      
+      let fetchedData = null;
+
+      document.getElementById('run-report-btn').addEventListener('click', async () => {
+        const type = document.getElementById('report-type').value;
+        reportBody.innerHTML = '<tr><td class="text-center text-muted" style="padding: 3rem;"><i class="ph ph-spinner ph-spin" style="font-size: 1.5rem;"></i><div style="margin-top: 0.5rem;">Compiling telemetry data...</div></td></tr>';
+        exportBtn.style.display = 'none';
+
+        try {
+          const res = await window.api.get(`/dashboard/reports?type=${type}`);
+          fetchedData = res.data || [];
+          
+          if (fetchedData.length === 0) {
+            reportHead.innerHTML = '';
+            reportBody.innerHTML = '<tr><td class="text-center text-muted" style="padding: 3rem;">No telemetry data matched the query criteria.</td></tr>';
+            return;
+          }
+
+          exportBtn.style.display = 'inline-flex';
+
+          // Layout headers based on type
+          if (type === 'popular_books') {
+            reportHead.innerHTML = `
+              <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Total Borrow Count</th>
+              </tr>
+            `;
+            reportBody.innerHTML = fetchedData.map(d => `
+              <tr>
+                <td><strong style="color: var(--clr-text);">${d.title}</strong></td>
+                <td><span class="text-muted">${d.author}</span></td>
+                <td><span class="badge badge-primary">${d.checkout_count} borrows</span></td>
+              </tr>
+            `).join('');
+          } else if (type === 'overdue_analysis') {
+            reportHead.innerHTML = `
+              <tr>
+                <th>Borrowing ID</th>
+                <th>Book Title</th>
+                <th>Patron Name</th>
+                <th>Due Date</th>
+                <th>Days Overdue</th>
+                <th>Fine Balance</th>
+              </tr>
+            `;
+            reportBody.innerHTML = fetchedData.map(d => `
+              <tr>
+                <td><code style="background: rgba(255,255,255,0.05); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">${d.borrowing_id}</code></td>
+                <td><strong style="color: var(--clr-text);">${d.book_title}</strong></td>
+                <td>${d.patron_name}</td>
+                <td><span class="text-muted">${window.formatDate(d.due_date)}</span></td>
+                <td><span class="badge badge-danger">${d.days_overdue} days</span></td>
+                <td><strong style="color: var(--clr-gold-bright);">₦${parseFloat(d.fine_accumulated).toFixed(2)}</strong></td>
+              </tr>
+            `).join('');
+          } else if (type === 'borrowing_trends') {
+            reportHead.innerHTML = `
+              <tr>
+                <th>Reporting Date</th>
+                <th>Borrowing Transactions Processed</th>
+              </tr>
+            `;
+            reportBody.innerHTML = fetchedData.map(d => `
+              <tr>
+                <td><span class="text-muted">${window.formatDate(d.date)}</span></td>
+                <td><strong style="color: var(--clr-text);">${d.count} transactions</strong></td>
+              </tr>
+            `).join('');
+          }
+
+        } catch (e) {
+          reportBody.innerHTML = `<tr><td class="text-danger text-center" style="padding: 2rem;">Error: ${e.message}</td></tr>`;
+        }
+      });
+
+      // CSV export
+      exportBtn.addEventListener('click', () => {
+        if (!fetchedData || fetchedData.length === 0) return;
+        
+        const type = document.getElementById('report-type').value;
+        let csvContent = "data:text/csv;charset=utf-8,";
+        
+        // build header
+        const keys = Object.keys(fetchedData[0]);
+        csvContent += keys.join(",") + "\n";
+        
+        // build rows
+        fetchedData.forEach(row => {
+          const values = keys.map(k => {
+            const escaped = ('' + row[k]).replace(/"/g, '""');
+            return `"${escaped}"`;
+          });
+          csvContent += values.join(",") + "\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `${type}_report_${Date.now()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.showToast("CSV Log Exported successfully.", "success");
+      });
+    });
+  </script>
+</body>
+</html>
+

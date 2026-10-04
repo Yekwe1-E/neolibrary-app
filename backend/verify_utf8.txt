@@ -1,0 +1,38 @@
+﻿================================================
+   NeoLibrary Backend API Verification Suite    
+================================================
+
+--- 1. Admin Auth ---
+  PASS: Admin login OK  (role: admin)
+  PASS: /auth/me returned profile for System Admin
+
+--- 2. Patron Registration & Login ---
+  PASS: Patron registered (id: 2fc0140e...)
+  PASS: Existing patron login OK
+  PASS: Suspended account correctly blocked (403)
+
+--- 3. Books Catalog ---
+  PASS: Catalog returned 4 books. First: "Clean Code"
+  PASS: Book detail OK for "Clean Code"
+  FAIL: Book creation: {"status":"error","message":"Validation failed.","errors":["Book title is required.","Book author is required.","Book ISBN is required.","Total copies must be a non-negative number."]}
+
+--- 4. Borrowing Flow ---
+  FAIL: Checkout failed: {"status":"error","message":"Validation failed.","errors":["Book ID is required."]}
+
+--- 5. Reservations ---
+  FAIL: Reserve: {"status":"error","message":"Validation failed.","errors":["Book ID is required."]}
+
+--- 6. Notifications ---
+  PASS: Notifications returned 1 items
+
+--- 7. Dashboard Stats ---
+  PASS: Dashboard stats OK
+
+--- 8. Security / RBAC ---
+  PASS: Unauthenticated POST /books rejected (401)
+  PASS: Patron POST /books rejected (403)
+
+================================================
+  SOME CHECKS FAILED -- Review output above.
+================================================
+

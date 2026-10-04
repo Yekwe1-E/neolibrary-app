@@ -1,0 +1,41 @@
+================================================
+   NeoLibrary Backend API Verification Suite    
+================================================
+
+--- 1. Admin Auth ---
+  PASS: Admin login OK  (role: admin)
+  PASS: /auth/me returned profile for System Admin
+
+--- 2. Patron Registration & Login ---
+  PASS: Patron registered (id: 38d99222...)
+  PASS: Existing patron login OK
+  PASS: Suspended account correctly blocked (403)
+
+--- 3. Books Catalog ---
+  PASS: Catalog returned 4 books. First: "Clean Code"
+  PASS: Book detail OK for "Clean Code"
+  PASS: Admin created new book OK
+
+--- 4. Borrowing Flow ---
+  PASS: Borrow OK (record: 88e5d227...)
+  PASS: Double-borrow correctly blocked
+  PASS: Renewal OK
+  PASS: Return OK
+
+--- 5. Reservations ---
+  PASS: Reserved out-of-stock book "Head First Design Patterns"
+
+--- 6. Notifications ---
+  PASS: Notifications returned 1 items
+
+--- 7. Dashboard Stats ---
+  PASS: Dashboard stats OK
+
+--- 8. Security / RBAC ---
+  PASS: Unauthenticated POST /books rejected (401)
+  PASS: Patron POST /books rejected (403)
+
+================================================
+  ALL CHECKS PASSED -- Backend API is healthy!
+================================================
+

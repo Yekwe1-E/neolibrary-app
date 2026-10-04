@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — NeoLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 0.875rem 0; border-bottom: 1px solid var(--clr-border-subtle);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--clr-primary); flex-shrink: 0; margin-top: 0.4rem;
+    }
+    .activity-meta { font-size: 0.75rem; color: var(--clr-text-faint); margin-top: 0.15rem; }
+
+    .quick-action {
+      display: flex; align-items: center; gap: 0.875rem;
+      padding: 1rem; background: var(--clr-bg-card); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md); cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-normal); text-decoration: none; color: var(--clr-text);
+    }
+    .quick-action:hover { border-color: var(--clr-primary); background: var(--clr-primary-subtle); transform: translateY(-2px); }
+    .quick-action i { font-size: 1.25rem; color: var(--clr-primary-bright); }
+    .quick-action span { font-size: 0.875rem; font-weight: 600; }
+
+    .loan-book-thumb {
+      width: 42px; height: 58px; object-fit: cover; border-radius: 4px;
+      border: 1px solid var(--clr-border); flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <header class="topbar">
+      <!-- Rendered by nav.js -->
+    </header>
+
+    <div class="app-content animate-fade-in" id="dashboard-wrapper">
+      <!-- Skeleton -->
+      <div class="skeleton" style="height:100px;border-radius:var(--radius-lg);margin-bottom:1.25rem;"></div>
+      <div class="stats-grid">
+        <div class="skeleton stat-card" style="height:88px;"></div>
+        <div class="skeleton stat-card" style="height:88px;"></div>
+        <div class="skeleton stat-card" style="height:88px;"></div>
+        <div class="skeleton stat-card" style="height:88px;"></div>
+      </div>
+      <div class="skeleton" style="height:320px;border-radius:var(--radius-lg);"></div>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAuth();
+      const user = window.Auth.getUser();
+
+      window.NavComponent.init({ activePage: 'dashboard', pageTitle: 'Dashboard' });
+
+      const wrapper = document.getElementById('dashboard-wrapper');
+
+      try {
+        if (window.Auth.isLibrarian()) {
+          // ── Admin / Librarian View ──
+          const [stats, activity] = await Promise.all([
+            window.api.get('/dashboard/stats'),
+            window.api.get('/dashboard/activity?limit=8'),
+          ]);
+
+          const s = stats.data;
+
+          let actHtml = '';
+          if (activity.data && activity.data.length > 0) {
+            actHtml = activity.data.map(log => `
+              <div class="activity-item">
+                <div class="activity-dot" style="background: ${log.action.includes('delete') || log.action.includes('archive') ? 'var(--clr-danger)' : 'var(--clr-success)'};"></div>
+                <div>
+                  <div style="font-size:0.875rem;">
+                    <strong style="color:var(--clr-text);">${log.user ? log.user.full_name : 'System'}</strong>
+                    <span style="color:var(--clr-text-muted);"> → </span>
+                    <span class="badge ${log.action.includes('delete') || log.action.includes('archive') ? 'badge-danger' : 'badge-success'}">${log.action}</span>
+                  </div>
+                  <div class="activity-meta">${new Date(log.created_at).toLocaleString()}</div>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            actHtml = '<p class="text-muted" style="padding:1rem 0;">No recent system activity.</p>';
+          }
+
+          wrapper.innerHTML = `
+            <div class="page-title">
+              <h1>System Dashboard</h1>
+              <p>Library operations overview and live statistics</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-card-icon indigo"><i class="ph ph-books"></i></div>
+                <div class="stat-card-data">
+                  <h3>${s.total_books}</h3>
+                  <p>Total Books</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-icon gold"><i class="ph ph-bookmark"></i></div>
+                <div class="stat-card-data">
+                  <h3>${s.active_borrowings}</h3>
+                  <p>Active Loans</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-icon red"><i class="ph ph-warning-circle"></i></div>
+                <div class="stat-card-data">
+                  <h3>${s.overdue_loans}</h3>
+                  <p>Overdue Items</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-icon green"><i class="ph ph-users"></i></div>
+                <div class="stat-card-data">
+                  <h3>${s.new_patrons_30d}</h3>
+                  <p>New Patrons (30d)</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+              <div class="dash-section">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+                  <h3>System Activity Feed</h3>
+                  <span class="badge badge-primary">Live</span>
+                </div>
+                ${actHtml}
+              </div>
+
+              <div class="dash-section">
+                <h3 style="margin-bottom:1.25rem;">Quick Actions</h3>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                  <a href="/pages/admin/book-management.html" class="quick-action">
+                    <i class="ph ph-plus-circle"></i>
+                    <span>Add New Book to Catalog</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/admin/user-management.html" class="quick-action">
+                    <i class="ph ph-users-three"></i>
+                    <span>Manage Patron Directory</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/admin/reports.html" class="quick-action">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>Generate Analytics Report</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/admin/settings.html" class="quick-action">
+                    <i class="ph ph-sliders"></i>
+                    <span>Library Policy Settings</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+
+        } else {
+          // ── Patron View ──
+          const loansRaw   = await window.api.get('/borrowings');
+          const loans      = loansRaw.data || [];
+          const activeLoans = loans.filter(l => l.return_date === null);
+          const overdue     = activeLoans.filter(l => new Date(l.due_date) < new Date());
+
+          let loansHtml = '';
+          if (activeLoans.length > 0) {
+            loansHtml = activeLoans.slice(0, 5).map(loan => {
+              const due       = new Date(loan.due_date);
+              const isOverdue = due < new Date();
+              const daysLeft  = Math.ceil((due - new Date()) / (1000 * 60 * 60 * 24));
+              return `
+                <div class="list-item">
+                  <div style="display:flex;gap:1rem;align-items:center;">
+                    <img class="loan-book-thumb"
+                         src="${loan.book?.cover_image_url || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2258%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%236366f1%22/%3E%3C/svg%3E'}"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2258%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%236366f1%22/%3E%3C/svg%3E'"
+                         alt="cover">
+                    <div>
+                      <div style="font-weight:600;font-size:0.9rem;color:var(--clr-text);">${loan.book?.title}</div>
+                      <div class="text-muted text-sm">Due: ${due.toLocaleDateString()}</div>
+                    </div>
+                  </div>
+                  <div>
+                    ${isOverdue
+                      ? `<span class="badge badge-danger"><i class="ph ph-warning"></i> Overdue</span>`
+                      : daysLeft <= 3
+                        ? `<span class="badge badge-warning">${daysLeft}d left</span>`
+                        : `<span class="badge badge-success">Active</span>`}
+                  </div>
+                </div>`;
+            }).join('');
+          } else {
+            loansHtml = `
+              <div style="text-align:center;padding:2.5rem 1rem;">
+                <i class="ph ph-book-open" style="font-size:2.5rem;color:var(--clr-text-faint);"></i>
+                <p class="text-muted" style="margin-top:0.75rem;">No active loans. Head to the catalog to find your next read!</p>
+                <a href="/pages/books.html" class="btn btn-primary btn-sm" style="margin-top:1rem;">Browse Catalog</a>
+              </div>`;
+          }
+
+          wrapper.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h1 style="font-size:1.75rem;">Welcome back, ${user.full_name.split(' ')[0]}! 👋</h1>
+                <p class="text-muted" style="margin-top:0.25rem;">Here's your reading status at a glance.</p>
+              </div>
+              <a href="/pages/books.html" class="btn btn-primary btn-sm">
+                <i class="ph ph-magnifying-glass"></i> Discover Books
+              </a>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-card-icon indigo"><i class="ph ph-book-open"></i></div>
+                <div class="stat-card-data">
+                  <h3>${activeLoans.length} <span style="font-size:1rem;font-weight:500;color:var(--clr-text-muted);">/ 5</span></h3>
+                  <p>Books Checked Out</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-icon ${overdue.length > 0 ? 'red' : 'green'}">
+                  <i class="ph ${overdue.length > 0 ? 'ph-warning' : 'ph-check-circle'}"></i>
+                </div>
+                <div class="stat-card-data">
+                  <h3>${overdue.length}</h3>
+                  <p>Overdue Items</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-icon gold"><i class="ph ph-clock"></i></div>
+                <div class="stat-card-data">
+                  <h3>${loans.filter(l => l.return_date !== null).length}</h3>
+                  <p>Total Books Read</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div class="dash-section">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+                  <h3>Active Loans</h3>
+                  <a href="/pages/borrowings.html" style="font-size:0.8rem;color:var(--clr-primary-bright);font-weight:500;">
+                    View All <i class="ph ph-arrow-right"></i>
+                  </a>
+                </div>
+                ${loansHtml}
+              </div>
+
+              <div class="dash-section">
+                <h3 style="margin-bottom:1.25rem;">Quick Navigation</h3>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                  <a href="/pages/books.html" class="quick-action">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <span>Search Book Catalog</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/borrowings.html" class="quick-action">
+                    <i class="ph ph-bookmark-simple"></i>
+                    <span>My Borrowing History</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/reservations.html" class="quick-action">
+                    <i class="ph ph-clock"></i>
+                    <span>View My Reservations</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                  <a href="/pages/profile.html" class="quick-action">
+                    <i class="ph ph-user-circle"></i>
+                    <span>Edit Profile Details</span>
+                    <i class="ph ph-arrow-right" style="margin-left:auto;color:var(--clr-text-faint);"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      } catch (e) {
+        console.error(e);
+        wrapper.innerHTML = `<div class="dash-section" style="text-align:center;">
+          <i class="ph ph-warning-circle" style="font-size:2.5rem;color:var(--clr-danger);"></i>
+          <p class="text-danger" style="margin-top:0.75rem;">Failed to load dashboard data. Please refresh.</p>
+        </div>`;
+      }
+    });
+  </script>
+</body>
+</html>

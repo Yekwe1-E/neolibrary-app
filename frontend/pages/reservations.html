@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Reservations — NeoLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="app-layout">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+
+      <div class="page-title">
+        <h1>My Reservations</h1>
+        <p>Manage your queue for out-of-stock books.</p>
+      </div>
+
+      <!-- Info Banner -->
+      <div class="dash-section" style="background:var(--clr-primary-subtle);border-color:hsla(239,84%,67%,0.25);margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1rem;">
+        <i class="ph ph-info" style="font-size:1.375rem;color:var(--clr-primary-bright);flex-shrink:0;margin-top:0.1rem;"></i>
+        <div>
+          <h4 style="font-size:0.9rem;margin-bottom:0.25rem;color:var(--clr-primary-bright);">About Reservations</h4>
+          <p class="text-sm" style="color:var(--clr-text-secondary);line-height:1.65;">
+            When your reserved book becomes available, we place it on hold for <strong>48 hours</strong>.
+            If you don't borrow it within that window, the copy cascades to the next person in queue.
+          </p>
+        </div>
+      </div>
+
+      <div class="dash-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <h3>Active Reservations</h3>
+          <a href="/pages/books.html" class="btn btn-primary btn-sm">
+            <i class="ph ph-clock"></i> Reserve More Books
+          </a>
+        </div>
+        <div class="table-wrapper">
+          <table class="table" id="res-table">
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Reserved On</th>
+                <th>Status</th>
+                <th>Hold Expires</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--clr-text-faint);">
+                <i class="ph ph-spinner ph-spin" style="font-size:1.25rem;"></i> Loading…
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAuth();
+      window.NavComponent.init({ activePage: 'reservations', pageTitle: 'My Reservations' });
+
+      const statusMap = {
+        pending_fulfillment: { badge: 'badge-warning', label: 'Pending Copy', icon: 'ph-clock' },
+        fulfilled:           { badge: 'badge-success', label: 'Ready for Pickup', icon: 'ph-check-circle' },
+        cancelled:           { badge: 'badge-danger',  label: 'Cancelled',   icon: 'ph-x-circle' },
+        expired:             { badge: 'badge-danger',  label: 'Expired',     icon: 'ph-warning' },
+      };
+
+      const refreshReservations = async () => {
+        try {
+          const res  = await window.api.get('/reservations');
+          const data = res.data || [];
+          const tbody = document.querySelector('#res-table tbody');
+
+          if (data.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--clr-text-faint);">
+              <i class="ph ph-clock" style="font-size:2rem;"></i>
+              <p style="margin-top:0.5rem;">No reservations on file. <a href="/pages/books.html" style="color:var(--clr-primary-bright);">Browse the catalog</a></p>
+            </td></tr>`;
+            return;
+          }
+
+          tbody.innerHTML = data.map(hold => {
+            const info = statusMap[hold.status] || { badge: 'badge-muted', label: hold.status, icon: 'ph-question' };
+            const canCancel = hold.status === 'pending_fulfillment';
+            return `
+              <tr>
+                <td>
+                  <div style="font-weight:600;font-size:0.875rem;">${hold.book?.title || 'Unknown Title'}</div>
+                  <div class="text-muted text-sm">By ${hold.book?.author || 'Unknown'}</div>
+                </td>
+                <td class="text-sm">${window.formatDate(hold.reservation_date)}</td>
+                <td>
+                  <span class="badge ${info.badge}">
+                    <i class="ph ${info.icon}"></i>
+                    ${info.label}
+                  </span>
+                </td>
+                <td class="text-sm ${hold.fulfillment_expires_at ? '' : 'text-muted'}">
+                  ${hold.fulfillment_expires_at ? window.formatDate(hold.fulfillment_expires_at) : 'N/A'}
+                </td>
+                <td>
+                  ${canCancel
+                    ? `<button class="btn btn-danger btn-sm" onclick="cancelHold('${hold.id}')">
+                         <i class="ph ph-x"></i> Cancel
+                       </button>`
+                    : '—'}
+                </td>
+              </tr>`;
+          }).join('');
+        } catch (e) {
+          window.showToast("Failed to load reservations: " + e.message, "error");
+        }
+      };
+
+      window.cancelHold = async (id) => {
+        if (!confirm("Cancel this reservation?")) return;
+        try {
+          await window.api.put(`/reservations/${id}/cancel`);
+          window.showToast("Reservation cancelled.", "success");
+          refreshReservations();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      refreshReservations();
+    });
+  </script>
+</body>
+</html>

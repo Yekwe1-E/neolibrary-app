@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoLibrary — Your Premium Digital Library</title>
+  <meta name="description" content="Access thousands of books instantly with NeoLibrary — the premium digital library management platform for modern readers and institutions.">
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* Landing-specific overrides */
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .hero-scroll-hint {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; color: var(--clr-text-faint);
+      margin-top: 1rem; animation: fadeIn 2s ease 1.5s both;
+    }
+    .hero-scroll-hint i { font-size: 1.125rem; animation: float 2.5s ease-in-out infinite; }
+
+    /* Trending section */
+    .trending-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: hsla(38,92%,58%,0.12); border: 1px solid hsla(38,92%,58%,0.25);
+      color: var(--clr-accent); padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full); font-size: 0.72rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex; gap: 0; border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl); overflow: hidden;
+      background: var(--clr-bg-surface); margin: 0 auto;
+      max-width: 640px;
+    }
+    .stats-bar-item {
+      flex: 1; padding: 1.375rem; text-align: center;
+      border-right: 1px solid var(--clr-border);
+    }
+    .stats-bar-item:last-child { border-right: none; }
+    .stats-bar-item h3 {
+      font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--clr-primary-bright), var(--clr-accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stats-bar-item p { font-size: 0.75rem; color: var(--clr-text-faint); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+
+    /* Feature cards */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;
+    }
+    .feature-card {
+      background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl); padding: 2rem;
+      transition: all var(--dur-fast) var(--ease-normal);
+    }
+    .feature-card:hover { border-color: var(--clr-border-strong); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; font-size: 1.375rem;
+      margin-bottom: 1.25rem;
+    }
+    .feature-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7; }
+
+    /* Testimonial */
+    .testimonial-strip {
+      display: flex; gap: 1.25rem; overflow: hidden; position: relative;
+    }
+    .testimonial-card {
+      flex-shrink: 0; width: 320px; background: var(--clr-bg-surface);
+      border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
+      padding: 1.5rem; position: relative;
+    }
+    .testimonial-card .stars { font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .testimonial-card p { font-size: 0.875rem; color: var(--clr-text-secondary); line-height: 1.7; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.25rem; }
+    .testimonial-author img { width: 36px; height: 36px; border-radius: 50%; }
+    .testimonial-author strong { font-size: 0.85rem; display: block; }
+    .testimonial-author span { font-size: 0.75rem; color: var(--clr-text-faint); }
+
+    /* Marquee animation */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { display: flex; gap: 1.25rem; animation: marquee 28s linear infinite; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────────────── -->
+  <nav class="navbar" id="main-navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo">
+        <i class="ph ph-books"></i>
+        NeoLibrary
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/pages/books.html">Catalog</a>
+        <a href="/pages/dashboard.html" id="nav-dashboard" style="display:none;">Dashboard</a>
+      </div>
+
+      <div class="nav-actions" id="auth-section">
+        <a href="/pages/login.html"    class="btn btn-ghost btn-sm"   id="btn-login">Sign In</a>
+        <a href="/pages/register.html" class="btn btn-primary btn-sm" id="btn-register">Get Started</a>
+      </div>
+
+      <button class="menu-toggle" id="mobile-menu-btn" style="display:none;">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid-overlay"></div>
+    </div>
+
+    <div class="container hero-content">
+      <!-- Text Side -->
+      <div class="hero-text animate-fade-in-up">
+        <div class="hero-badge">
+          <i class="ph ph-sparkle"></i>
+          Premium Digital Library Platform
+        </div>
+
+        <h1>
+          Discover your next<br>
+          <span class="gradient-text">great read.</span>
+        </h1>
+
+        <p>
+          Thousands of books, instant reservations, real-time availability —
+          all in one beautifully designed platform built for modern readers.
+        </p>
+
+        <div class="hero-search-box" style="margin-bottom:2rem;">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" id="hero-search-input" placeholder="Search by title, author or ISBN…">
+          <button class="btn btn-primary" id="hero-search-btn">Search</button>
+        </div>
+
+        <div class="hero-actions">
+          <a href="/pages/register.html" class="btn btn-accent btn-lg">
+            <i class="ph ph-user-plus"></i> Get your Library Card
+          </a>
+          <a href="/pages/books.html" class="btn btn-outline btn-lg">
+            Browse Catalog <i class="ph ph-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="hero-scroll-hint">
+          <i class="ph ph-arrow-down"></i>
+          Scroll to explore features
+        </div>
+      </div>
+
+      <!-- Visual Side -->
+      <div class="hero-visual animate-fade-in">
+        <div class="book-mockup">
+          <div class="book-mockup-glow"></div>
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/41xShCOr8sL._SX379_BO1,204,203,200_.jpg"
+            alt="Featured Book"
+            class="floating-image"
+            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22380%22 height=%22500%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%236366f1%22 rx=%2216%22/><text x=%2250%25%22 y=%2245%25%22 fill=%22white%22 font-size=%2228%22 font-family=%22sans-serif%22 font-weight=%22bold%22 text-anchor=%22middle%22>NeoLibrary</text><text x=%2250%25%22 y=%2255%25%22 fill=%22%23c7d2fe%22 font-size=%2218%22 font-family=%22sans-serif%22 text-anchor=%22middle%22>Digital Library</text></svg>';"
+          >
+
+          <!-- Floating cards -->
+          <div class="orbit-card orbit-card-1">
+            <i class="ph ph-check-circle" style="color:var(--clr-success);"></i>
+            Available Now
+          </div>
+          <div class="orbit-card orbit-card-2">
+            <i class="ph ph-books"></i>
+            2,500+ Titles
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── STATS BAR ────────────────────────────────────── -->
+  <section style="padding: 3rem 0; background: var(--clr-bg-surface); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border);">
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stats-bar-item">
+          <h3 id="stat-books">2,500+</h3>
+          <p>Books Available</p>
+        </div>
+        <div class="stats-bar-item">
+          <h3 id="stat-patrons">10K+</h3>
+          <p>Active Readers</p>
+        </div>
+        <div class="stats-bar-item">
+          <h3>48h</h3>
+          <p>Reserve Window</p>
+        </div>
+        <div class="stats-bar-item">
+          <h3>Free</h3>
+          <p>Membership</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORIES ───────────────────────────────────── -->
+  <section class="section categories-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Browse Categories</h2>
+          <p>Find your next book by genre</p>
+        </div>
+        <a href="/pages/books.html" class="view-all">
+          View All <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+      <div class="categories-grid" id="categories-container">
+        <div class="category-card skeleton" style="height:160px;"></div>
+        <div class="category-card skeleton" style="height:160px;"></div>
+        <div class="category-card skeleton" style="height:160px;"></div>
+        <div class="category-card skeleton" style="height:160px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRENDING BOOKS ────────────────────────────────── -->
+  <section class="section popular-books-section" style="background: var(--clr-bg-surface); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border);">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="trending-badge" style="margin-bottom:0.75rem;">
+            <i class="ph ph-fire"></i> Trending This Week
+          </div>
+          <h2>Most Popular Books</h2>
+          <p>Most borrowed titles by our patrons right now</p>
+        </div>
+        <a href="/pages/books.html" class="view-all">
+          Full Catalog <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="books-grid" id="popular-books-container">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="flex-direction: column; align-items: center; text-align: center; margin-bottom: 3.5rem;">
+        <h2>Everything you need in a library</h2>
+        <p style="max-width: 500px; margin: 0.5rem auto 0;">Built for readers and librarians alike with a full suite of management and discovery tools.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: var(--clr-primary-subtle);">
+            <i class="ph ph-magnifying-glass" style="color: var(--clr-primary-bright);"></i>
+          </div>
+          <h3>Instant Search</h3>
+          <p>Find any title, author or ISBN across our entire catalog in milliseconds with smart search and filters.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: hsla(38,92%,58%,0.12);">
+            <i class="ph ph-clock" style="color: var(--clr-accent);"></i>
+          </div>
+          <h3>Smart Reservations</h3>
+          <p>Queue automatically for out-of-stock books. We hold your copy for 48 hours when it becomes available.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: var(--clr-success-subtle);">
+            <i class="ph ph-shield-check" style="color: var(--clr-success);"></i>
+          </div>
+          <h3>Fine Management</h3>
+          <p>Automatic overdue calculations and seamless fine settlement — keeping your account in good standing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: var(--clr-danger-subtle);">
+            <i class="ph ph-chart-bar" style="color: var(--clr-danger);"></i>
+          </div>
+          <h3>Rich Analytics</h3>
+          <p>Staff-side dashboards with popular book reports, overdue audits and borrowing trend analysis.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: hsla(280,80%,70%,0.12);">
+            <i class="ph ph-bell" style="color: hsl(280,80%,70%);"></i>
+          </div>
+          <h3>Notifications</h3>
+          <p>Get notified when reserved books are ready, when due dates are approaching, and more.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: hsla(200,90%,60%,0.12);">
+            <i class="ph ph-devices" style="color: hsl(200,90%,60%);"></i>
+          </div>
+          <h3>Fully Responsive</h3>
+          <p>Access your library card from any device — desktop, tablet or mobile — with a seamless experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ──────────────────────────────────── -->
+  <section class="section" style="background: var(--clr-bg-surface); border-top: 1px solid var(--clr-border); overflow: hidden;">
+    <div class="container" style="margin-bottom: 2.5rem;">
+      <div style="text-align: center;">
+        <h2>What our readers say</h2>
+        <p style="color: var(--clr-text-muted); margin-top: 0.5rem;">Trusted by thousands of readers and institutions</p>
+      </div>
+    </div>
+    <div class="testimonial-strip">
+      <div class="marquee-track" id="marquee-track">
+        <!-- duplicated by JS for infinite loop -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────── -->
+  <section class="section cta-banner">
+    <div class="cta-content">
+      <div class="hero-badge" style="margin: 0 auto 1.5rem;">
+        <i class="ph ph-rocket-launch"></i> Join today — it's free
+      </div>
+      <h2>Ready to unlock the library?</h2>
+      <p>Join thousands of readers sharing knowledge and expanding their horizons every day.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/pages/register.html" class="btn btn-primary btn-xl">Get your Library Card</a>
+        <a href="/pages/books.html"    class="btn btn-outline btn-xl">Browse Catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <i class="ph ph-books"></i>
+          NeoLibrary
+        </a>
+        <p>A modern digital library platform bringing infinite knowledge to your fingertips — anywhere, anytime.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="ph ph-twitter-logo"></i></a>
+          <a href="#" class="social-btn"><i class="ph ph-github-logo"></i></a>
+          <a href="#" class="social-btn"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <a href="/">Home</a>
+        <a href="/pages/books.html">Book Catalog</a>
+        <a href="/pages/login.html">Member Login</a>
+        <a href="/pages/register.html">Register</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact Staff</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 NeoLibrary System. All rights reserved. Built with care.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Testimonial data
+    const testimonials = [
+      { name: 'Amara Okafor', role: 'Graduate Student', stars: 5, text: 'NeoLibrary completely changed how I do research. Finding and reserving academic books has never been this smooth. The interface is stunning.' },
+      { name: 'David Chen', role: 'High School Teacher', stars: 5, text: 'I use NeoLibrary to manage my classroom reading lists. The catalog search and real-time availability saves me so much time.' },
+      { name: 'Fatima Al-Rashid', role: 'Avid Reader', stars: 5, text: 'The reservation queue system is brilliant. I get notified instantly when my book is available. Premium experience all the way.' },
+      { name: 'Marcus Thompson', role: 'Librarian, City College', stars: 5, text: 'The admin dashboard analytics are invaluable. Overdue reports, borrowing trends — everything I need in one place.' },
+      { name: 'Priya Sharma', role: 'Book Club Organizer', stars: 5, text: 'Beautiful design and incredibly easy to navigate. I recommended NeoLibrary to our entire book club community.' },
+      { name: 'Emeka Nwankwo', role: 'University Professor', stars: 5, text: 'The fine management system is transparent and fair. Students can see their outstanding balances clearly and settle them easily.' },
+    ];
+
+    function buildTestimonial(t) {
+      return `
+        <div class="testimonial-card">
+          <div class="stars">${'★'.repeat(t.stars)}</div>
+          <p>"${t.text}"</p>
+          <div class="testimonial-author">
+            <img src="https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(t.name)}&backgroundColor=6366f1&textColor=ffffff" alt="${t.name}">
+            <div>
+              <strong>${t.name}</strong>
+              <span>${t.role}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    const track = document.getElementById('marquee-track');
+    if (track) {
+      const cards = testimonials.map(buildTestimonial).join('');
+      track.innerHTML = cards + cards; // duplicate for infinite
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks      = document.getElementById('nav-links');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    // Navbar scroll class
+    const navbar = document.getElementById('main-navbar');
+    window.addEventListener('scroll', () => {
+      navbar?.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+  </script>
+</body>
+</html>

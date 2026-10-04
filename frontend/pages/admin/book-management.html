@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Management — NeoLibrary Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .grid-form { grid-template-columns: 1fr; } }
+    
+    dialog {
+      background: var(--clr-bg-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl);
+      color: var(--clr-text);
+      max-width: 620px;
+      width: 90%;
+      padding: 0;
+      box-shadow: var(--shadow-2xl);
+    }
+    dialog::backdrop {
+      background: rgba(5, 7, 13, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--clr-border-subtle);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--clr-border-subtle);
+      display: flex; justify-content: flex-end; gap: 0.75rem; background: rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body class="app-layout">
+  
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+      <div class="dash-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.35rem; font-weight: 700;">Catalog Matrix & Inventory</h2>
+            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">Manage digital assets, modify metadata, and control copy availability.</p>
+          </div>
+          <button class="btn btn-primary" id="add-book-btn">
+            <i class="ph ph-plus-circle"></i> Add New Book
+          </button>
+        </div>
+
+        <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+          <div style="position: relative; flex: 1; max-width: 420px;">
+            <i class="ph ph-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);"></i>
+            <input type="text" id="search-box" class="form-control" placeholder="Search inventory by title, author, ISBN..." style="padding-left: 2.75rem;">
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="table" id="inventory-table">
+            <thead>
+              <tr>
+                <th>Cover</th>
+                <th>Title & Author</th>
+                <th>ISBN</th>
+                <th>Copies Available</th>
+                <th>Shelf</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS Injected -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit dialog -->
+  <dialog id="book-modal">
+    <div class="modal-header">
+      <h3 id="modal-title" style="font-size: 1.15rem; font-weight: 700; color: var(--clr-text);">Add New Catalog Item</h3>
+      <button type="button" class="btn btn-ghost" id="close-modal-x" style="padding: 0.25rem 0.5rem;"><i class="ph ph-x" style="font-size: 1.25rem;"></i></button>
+    </div>
+    <form id="book-form">
+      <div class="modal-body">
+        <input type="hidden" id="book-id">
+        
+        <div class="grid-form">
+          <div class="form-group">
+            <label for="title" class="form-label">Book Title</label>
+            <input type="text" id="title" class="form-control" required placeholder="The Great Gatsby">
+          </div>
+          <div class="form-group">
+            <label for="author" class="form-label">Author Name</label>
+            <input type="text" id="author" class="form-control" required placeholder="F. Scott Fitzgerald">
+          </div>
+        </div>
+
+        <div class="grid-form">
+          <div class="form-group">
+            <label for="isbn" class="form-label">ISBN-13</label>
+            <input type="text" id="isbn" class="form-control" required placeholder="9780123456789">
+          </div>
+          <div class="form-group">
+            <label for="genre" class="form-label">Genres (Comma Separated)</label>
+            <input type="text" id="genre" class="form-control" required placeholder="Fiction, Classic">
+          </div>
+        </div>
+
+        <div class="grid-form">
+          <div class="form-group">
+            <label for="total_copies" class="form-label">Total Copy Count</label>
+            <input type="number" id="total_copies" class="form-control" required min="1" placeholder="5">
+          </div>
+          <div class="form-group">
+            <label for="shelf_location" class="form-label">Shelf Location</label>
+            <input type="text" id="shelf_location" class="form-control" placeholder="A1-F2">
+          </div>
+        </div>
+
+        <div class="grid-form">
+          <div class="form-group">
+            <label for="publisher" class="form-label">Publisher</label>
+            <input type="text" id="publisher" class="form-control" placeholder="Penguin Books">
+          </div>
+          <div class="form-group">
+            <label for="publication_year" class="form-label">Publication Year</label>
+            <input type="number" id="publication_year" class="form-control" placeholder="1925">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">Book Synopsis</label>
+          <textarea id="description" class="form-control" rows="3" placeholder="Summary..."></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="close-modal-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Cover Upload Dialog -->
+  <dialog id="upload-modal" style="max-width: 440px;">
+    <div class="modal-header">
+      <h3 style="font-size: 1.15rem; font-weight: 700;">Upload Book Cover</h3>
+      <button type="button" class="btn btn-ghost" id="close-upload-x" style="padding: 0.25rem 0.5rem;"><i class="ph ph-x" style="font-size: 1.25rem;"></i></button>
+    </div>
+    <form id="upload-form" enctype="multipart/form-data">
+      <div class="modal-body">
+        <input type="hidden" id="upload-book-id">
+        <div class="form-group">
+          <label for="cover-file" class="form-label">Image File (PNG/JPG/WEBP)</label>
+          <input type="file" id="cover-file" class="form-control" required accept="image/*">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="close-upload-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="upload-submit-btn">Upload Image</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast-container" class="toast-container"></div>
+  
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/ui.js"></script>
+  <script src="../../js/nav.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAdminOrLibrarian();
+      
+      // Init standard dynamic shell
+      window.NavComponent.init({
+        activePage: 'book-management',
+        pageTitle: 'Book Management'
+      });
+
+      const refreshInventory = async () => {
+        try {
+          const search = document.getElementById('search-box').value.trim();
+          let path = '/books?includeArchived=true&limit=100';
+          if (search) path += `&search=${encodeURIComponent(search)}`;
+
+          const res = await window.api.get(path);
+          const list = res.books || [];
+
+          const tbody = document.querySelector('#inventory-table tbody');
+          if (list.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted" style="padding: 3rem;">No books match the search query.</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = list.map(b => `
+            <tr>
+              <td>
+                <img src="${b.cover_image_url || 'https://images-na.ssl-images-amazon.com/images/I/41xShCOr8sL._SX379_BO1,204,203,200_.jpg'}" style="width: 42px; height: 58px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'42\' height=\'58\' viewBox=\'0 0 42 58\'><rect width=\'100%\' height=\'100%\' fill=\'%231e2338\'/><text x=\'50%\' y=\'55%\' fill=\'%23a1a1aa\' font-size=\'10\' font-family=\'sans-serif\' font-weight=\'bold\' text-anchor=\'middle\'>Cover</text></svg>';">
+              </td>
+              <td>
+                <div style="font-weight: 600; color: var(--clr-text);">${b.title}</div>
+                <div class="text-muted text-sm">By ${b.author}</div>
+              </td>
+              <td><code style="background: rgba(255,255,255,0.05); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">${b.isbn}</code></td>
+              <td>
+                <span style="font-weight: 700; color: var(--clr-text);">${b.available_copies}</span> <span class="text-muted">/ ${b.total_copies}</span>
+                ${b.status === 'archived' ? ' <span class="badge badge-danger" style="margin-left: 0.5rem;">Archived</span>' : ''}
+              </td>
+              <td><span class="badge badge-neutral">${b.shelf_location || 'N/A'}</span></td>
+              <td style="text-align: right;">
+                <div style="display: flex; gap: 0.35rem; justify-content: flex-end;">
+                  <button class="btn btn-outline" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="openEditModal('${b.id}')" title="Edit Metadata"><i class="ph ph-pencil-simple"></i></button>
+                  <button class="btn btn-outline" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="openUploadModal('${b.id}')" title="Upload Cover"><i class="ph ph-image"></i></button>
+                  ${b.status !== 'archived' 
+                     ? `<button class="btn btn-danger" style="padding: 0.35rem 0.6rem; font-size: 0.9rem;" onclick="archiveBook('${b.id}')" title="Archive"><i class="ph ph-trash"></i></button>`
+                     : ''}
+                </div>
+              </td>
+            </tr>
+          `).join('');
+
+        } catch (e) {
+          window.showToast("Failed to fetch catalog: " + e.message, "error");
+        }
+      };
+
+      // Modal management
+      const bookModal = document.getElementById('book-modal');
+      const addBtn = document.getElementById('add-book-btn');
+      const closeBtn = document.getElementById('close-modal-btn');
+      const closeX = document.getElementById('close-modal-x');
+      
+      addBtn.addEventListener('click', () => {
+        document.getElementById('modal-title').innerText = "Add New Catalog Item";
+        document.getElementById('book-form').reset();
+        document.getElementById('book-id').value = '';
+        bookModal.showModal();
+      });
+
+      closeBtn.addEventListener('click', () => bookModal.close());
+      closeX.addEventListener('click', () => bookModal.close());
+
+      // Search box binding
+      document.getElementById('search-box').addEventListener('input', () => refreshInventory());
+
+      // Edit call
+      window.openEditModal = async (id) => {
+        try {
+          const res = await window.api.get(`/books/${id}`);
+          const b = res.data;
+          
+          document.getElementById('modal-title').innerText = "Edit Catalog Item";
+          document.getElementById('book-id').value = b.id;
+          document.getElementById('title').value = b.title;
+          document.getElementById('author').value = b.author;
+          document.getElementById('isbn').value = b.isbn;
+          document.getElementById('genre').value = (b.genre || []).join(', ');
+          document.getElementById('total_copies').value = b.total_copies;
+          document.getElementById('shelf_location').value = b.shelf_location || '';
+          document.getElementById('publisher').value = b.publisher || '';
+          document.getElementById('publication_year').value = b.publication_year || '';
+          document.getElementById('description').value = b.description || '';
+
+          bookModal.showModal();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      // Submit handler
+      document.getElementById('book-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('book-id').value;
+        const payload = {
+          title: document.getElementById('title').value.trim(),
+          author: document.getElementById('author').value.trim(),
+          isbn: document.getElementById('isbn').value.trim(),
+          genre: document.getElementById('genre').value.split(',').map(g => g.trim()),
+          total_copies: parseInt(document.getElementById('total_copies').value),
+          shelf_location: document.getElementById('shelf_location').value.trim(),
+          publisher: document.getElementById('publisher').value.trim(),
+          publication_year: parseInt(document.getElementById('publication_year').value) || null,
+          description: document.getElementById('description').value.trim(),
+          language: "English"
+        };
+
+        try {
+          if (id) {
+            await window.api.put(`/books/${id}`, payload);
+            window.showToast("Book configurations updated successfully.", "success");
+          } else {
+            await window.api.post('/books', payload);
+            window.showToast("Catalog item created successfully.", "success");
+          }
+          bookModal.close();
+          refreshInventory();
+        } catch (err) {
+          window.showToast(err.message, "error");
+        }
+      });
+
+      // Archive book call
+      window.archiveBook = async (id) => {
+        if (!confirm("Are you sure you want to archive this book? This will prevent new borrows.")) return;
+        try {
+          await window.api.delete(`/books/${id}`);
+          window.showToast("Catalog item archived successfully.", "success");
+          refreshInventory();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      // Upload Cover Modals
+      const uploadModal = document.getElementById('upload-modal');
+      window.openUploadModal = (id) => {
+        document.getElementById('upload-book-id').value = id;
+        document.getElementById('cover-file').value = '';
+        uploadModal.showModal();
+      };
+      
+      document.getElementById('close-upload-btn').addEventListener('click', () => uploadModal.close());
+      document.getElementById('close-upload-x').addEventListener('click', () => uploadModal.close());
+
+      document.getElementById('upload-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('upload-book-id').value;
+        const fileInput = document.getElementById('cover-file');
+        
+        if (!fileInput.files || fileInput.files.length === 0) return;
+
+        const formData = new FormData();
+        formData.append('cover', fileInput.files[0]);
+
+        try {
+          const submitBtn = document.getElementById('upload-submit-btn');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Uploading...';
+
+          await window.api.post(`/books/${id}/cover`, formData);
+          window.showToast("Book cover uploaded successfully!", "success");
+          uploadModal.close();
+          refreshInventory();
+        } catch (err) {
+          window.showToast(err.message, "error");
+        } finally {
+          const submitBtn = document.getElementById('upload-submit-btn');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Upload Image';
+        }
+      });
+
+      // Initial load
+      refreshInventory();
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Borrowings — NeoLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="app-layout">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <header class="topbar"></header>
+
+    <div class="app-content animate-fade-in">
+
+      <div class="page-title">
+        <h1>My Borrowings</h1>
+        <p>Track your active loans, renew books, and view borrowing history.</p>
+      </div>
+
+      <!-- Fine Banner -->
+      <div id="fines-banner" class="fine-box">
+        <div style="display:flex;align-items:center;gap:0.875rem;">
+          <i class="ph ph-check-circle" id="fines-icon" style="font-size:1.5rem;color:var(--clr-success);"></i>
+          <div>
+            <h3 id="fines-title" style="font-size:1rem;font-weight:700;">Fine Balance: ₦0.00</h3>
+            <p id="fines-desc" class="text-muted text-sm" style="margin-top:0.125rem;">You have no outstanding fines. Keep it up!</p>
+          </div>
+        </div>
+        <button id="pay-fines-btn" class="btn btn-danger btn-sm" style="display:none;">
+          <i class="ph ph-credit-card"></i> Pay Fines
+        </button>
+      </div>
+
+      <!-- Active Loans -->
+      <div class="dash-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <div>
+            <h3>Active Loans</h3>
+            <p class="text-muted text-sm" style="margin-top:0.2rem;">Fine rate: ₦50/day after due date.</p>
+          </div>
+          <a href="/pages/books.html" class="btn btn-primary btn-sm">
+            <i class="ph ph-plus"></i> Borrow More
+          </a>
+        </div>
+        <div class="table-wrapper">
+          <table class="table" id="active-table">
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Borrowed</th>
+                <th>Due Date</th>
+                <th>Renewals</th>
+                <th>Fine</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--clr-text-faint);">
+                <i class="ph ph-spinner ph-spin" style="font-size:1.25rem;"></i> Loading…
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="dash-section">
+        <h3 style="margin-bottom:1.5rem;">Borrowing History</h3>
+        <div class="table-wrapper">
+          <table class="table" id="history-table">
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Borrowed</th>
+                <th>Due Date</th>
+                <th>Returned</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--clr-text-faint);">
+                <i class="ph ph-spinner ph-spin" style="font-size:1.25rem;"></i> Loading…
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Fine Payment Dialog -->
+  <dialog id="pay-modal">
+    <div class="modal-header">
+      <h3>Settle Library Fines</h3>
+      <button type="button" class="btn btn-ghost btn-icon" id="close-modal-btn"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="text-muted text-sm" style="margin-bottom:1.25rem;">
+        Enter amount to settle in Nigerian Naira (₦). Minimum payment is ₦100.
+      </p>
+      <div class="form-group">
+        <label for="pay-amount">Payment Amount (₦)</label>
+        <input type="number" id="pay-amount" class="form-control" placeholder="500" min="100">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="cancel-modal-btn">Cancel</button>
+      <button class="btn btn-primary" id="confirm-payment-btn">
+        <i class="ph ph-credit-card"></i> Process Payment
+      </button>
+    </div>
+  </dialog>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      window.Auth.requireAuth();
+      const user = window.Auth.getUser();
+
+      window.NavComponent.init({ activePage: 'borrowings', pageTitle: 'My Borrowings' });
+
+      const PLACEHOLDER_THUMB = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58'%3E%3Crect width='100%25' height='100%25' fill='%236366f1' rx='4'/%3E%3C/svg%3E`;
+
+      const refreshData = async () => {
+        try {
+          const [res, finesRes] = await Promise.all([
+            window.api.get('/borrowings'),
+            window.api.get(`/users/${user.id}/fines`),
+          ]);
+
+          const data        = res.data || [];
+          const fineSummary = finesRes.data || { total_fines: 0, fines: [] };
+
+          // Fine banner
+          const banner    = document.getElementById('fines-banner');
+          const fineIcon  = document.getElementById('fines-icon');
+          const finesTitle = document.getElementById('fines-title');
+          const finesDesc  = document.getElementById('fines-desc');
+          const payBtn     = document.getElementById('pay-fines-btn');
+
+          if (fineSummary.total_fines > 0) {
+            banner.classList.add('has-fines');
+            fineIcon.className     = 'ph ph-warning-circle';
+            fineIcon.style.color   = 'var(--clr-danger)';
+            finesTitle.textContent = `Outstanding Balance: ₦${fineSummary.total_fines.toFixed(2)}`;
+            finesDesc.textContent  = 'Please settle outstanding fines. Accounts with > ₦500 may be suspended.';
+            payBtn.style.display   = 'inline-flex';
+            payBtn.dataset.total   = fineSummary.total_fines;
+          }
+
+          const activeList  = data.filter(b => b.return_date === null);
+          const historyList = data.filter(b => b.return_date !== null);
+
+          // Active table
+          const activeTbody = document.querySelector('#active-table tbody');
+          activeTbody.innerHTML = activeList.length === 0
+            ? `<tr><td colspan="6" style="text-align:center;padding:3rem;color:var(--clr-text-faint);">
+                 <i class="ph ph-book-open" style="font-size:2rem;"></i>
+                 <p style="margin-top:0.5rem;">No active loans. <a href="/pages/books.html" style="color:var(--clr-primary-bright);">Browse the catalog</a></p>
+               </td></tr>`
+            : activeList.map(loan => {
+                const matchFine = fineSummary.fines.find(f => f.borrowing_id === loan.id);
+                const fine      = matchFine ? matchFine.fine_accumulated : 0;
+                const isOverdue = new Date(loan.due_date) < new Date();
+                return `
+                  <tr>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:0.75rem;">
+                        <img src="${loan.book?.cover_image_url || PLACEHOLDER_THUMB}"
+                             onerror="this.src='${PLACEHOLDER_THUMB}'"
+                             style="width:36px;height:50px;object-fit:cover;border-radius:4px;border:1px solid var(--clr-border);">
+                        <div>
+                          <div style="font-weight:600;font-size:0.875rem;">${loan.book?.title}</div>
+                          <div class="text-muted text-sm">By ${loan.book?.author}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-sm">${window.formatDate(loan.borrow_date)}</td>
+                    <td class="text-sm">
+                      <span style="color:${isOverdue ? 'var(--clr-danger)' : 'inherit'};font-weight:${isOverdue ? 600 : 400};">
+                        ${window.formatDate(loan.due_date)}
+                        ${isOverdue ? '<i class="ph ph-warning-circle" style="margin-left:0.25rem;"></i>' : ''}
+                      </span>
+                    </td>
+                    <td class="text-sm">${loan.renewed_count} / 2</td>
+                    <td class="text-sm ${fine > 0 ? '' : 'text-muted'}">
+                      ${fine > 0 ? `<span style="color:var(--clr-danger);font-weight:600;">₦${fine.toFixed(2)}</span>` : '₦0.00'}
+                    </td>
+                    <td>
+                      <button class="btn btn-outline btn-sm" onclick="renewLoan('${loan.id}')"
+                              ${loan.renewed_count >= 2 ? 'disabled' : ''}>
+                        <i class="ph ph-arrows-counter-clockwise"></i> Renew
+                      </button>
+                    </td>
+                  </tr>`;
+              }).join('');
+
+          // History table
+          const histTbody = document.querySelector('#history-table tbody');
+          histTbody.innerHTML = historyList.length === 0
+            ? `<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--clr-text-faint);">No historical loans found.</td></tr>`
+            : historyList.map(loan => `
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:0.875rem;">${loan.book?.title}</div>
+                    <div class="text-muted text-sm">By ${loan.book?.author}</div>
+                  </td>
+                  <td class="text-sm">${window.formatDate(loan.borrow_date)}</td>
+                  <td class="text-sm">${window.formatDate(loan.due_date)}</td>
+                  <td class="text-sm" style="color:var(--clr-success);">${window.formatDate(loan.return_date)}</td>
+                  <td class="text-muted text-sm">${loan.notes || '—'}</td>
+                </tr>`).join('');
+
+        } catch (e) {
+          window.showToast("Failed to load borrowing data: " + e.message, "error");
+        }
+      };
+
+      window.renewLoan = async (loanId) => {
+        try {
+          await window.api.put(`/borrowings/${loanId}/renew`);
+          window.showToast("Loan renewed successfully!", "success");
+          refreshData();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      };
+
+      // Modal
+      const payModal = document.getElementById('pay-modal');
+      document.getElementById('pay-fines-btn').addEventListener('click', () => {
+        const payBtn = document.getElementById('pay-fines-btn');
+        document.getElementById('pay-amount').value = parseFloat(payBtn.dataset.total);
+        payModal.showModal();
+      });
+      document.getElementById('close-modal-btn').addEventListener('click',  () => payModal.close());
+      document.getElementById('cancel-modal-btn').addEventListener('click', () => payModal.close());
+
+      document.getElementById('confirm-payment-btn').addEventListener('click', async () => {
+        const amt = parseFloat(document.getElementById('pay-amount').value);
+        if (isNaN(amt) || amt < 100) { window.showToast("Minimum payment is ₦100.", "warning"); return; }
+        try {
+          await window.api.post(`/users/${user.id}/pay-fines`, { amount: amt });
+          window.showToast("Payment processed successfully!", "success");
+          payModal.close();
+          refreshData();
+        } catch (e) {
+          window.showToast(e.message, "error");
+        }
+      });
+
+      refreshData();
+    });
+  </script>
+</body>
+</html>
