@@ -91,14 +91,29 @@ class AuthController {
 
         // Fallback manually inserting profile if Supabase triggers are not fully set up online
         if (!profile) {
-          profile = await userService.updateUser(data.user.id, {
-            full_name,
-            email: email.toLowerCase(),
-            phone: phone || '',
-            address: address || '',
-            role: 'patron',
-            status: 'active'
-          }, data.user.id);
+          const { supabaseAdmin } = require('../config/supabase');
+          const { data: inserted, error: insertErr } = await supabaseAdmin
+            .from('profiles')
+            .upsert({
+              id: data.user.id,
+              full_name: full_name || 'Library Patron',
+              email: email.toLowerCase(),
+              phone: phone || '',
+              address: address || '',
+              role: 'patron',
+              status: 'active',
+              membership_date: new Date().toISOString(),
+              avatar_url: `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(full_name || 'patron')}`,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            }, { onConflict: 'id' })
+            .select()
+            .maybeSingle();
+
+          if (insertErr) {
+            console.error('Profile upsert error:', insertErr.message);
+          }
+          profile = inserted;
         }
 
         const token = data.session?.access_token || generateToken(data.user.id, email);

@@ -51,8 +51,8 @@ class BookService {
         pages: Math.ceil(books.length / limit)
       };
     } else {
-      // Supabase Query Builder
-      let query = supabase.from('books').select('*', { count: 'exact' });
+      // Supabase Query Builder (use admin client to bypass RLS recursion)
+      let query = supabaseAdmin.from('books').select('*', { count: 'exact' });
 
       if (!filters.includeArchived) {
         query = query.neq('status', 'archived');
@@ -105,7 +105,7 @@ class BookService {
       const book = mockDb.data.books.find(b => b.id === id);
       return book || null;
     } else {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('books')
         .select('*')
         .eq('id', id)

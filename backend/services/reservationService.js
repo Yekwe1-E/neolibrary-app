@@ -30,7 +30,7 @@ class ReservationService {
       populated.sort((a, b) => new Date(b.reservation_date) - new Date(a.reservation_date));
       return populated;
     } else {
-      let query = supabase.from('reservations').select(`
+      let query = supabaseAdmin.from('reservations').select(`
         *,
         book:books(title, author, cover_image_url, isbn),
         patron:profiles(full_name, email)

@@ -38,7 +38,7 @@ class BorrowingService {
       populated.sort((a, b) => new Date(b.borrow_date) - new Date(a.borrow_date));
       return populated;
     } else {
-      let query = supabase.from('borrowings').select(`
+      let query = supabaseAdmin.from('borrowings').select(`
         *,
         book:books(title, author, cover_image_url, isbn),
         patron:profiles(full_name, email)
